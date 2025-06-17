@@ -5,6 +5,7 @@
 
 int main() {
 
+    //.
     //VARIÁVEIS COM VALOR REQUISITADO AO USUÁRIO
     float rendFamMensal, notaProcSelet, notaENEM, notaEnsinoM;
     int ePCD = 0; //coloquei 0 predefinido para lembrar que o valor irá alternar entre 0 e 1
