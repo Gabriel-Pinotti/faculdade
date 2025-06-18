@@ -18,7 +18,7 @@ int main() {
     } while (!(escolhaExibicao >= 1 && escolhaExibicao <= 5));
 
 
-
+    printf("\n\n\n");
     switch(escolhaExibicao){
         case 1:
             for (int linha = 0; linha < n_linhas; linha++) { // for para imprimir a matriz COMPLETA
@@ -29,7 +29,18 @@ int main() {
             };
             break;
         case 2:
-            
+            for (int linha =0; linha < n_linhas; linha++){
+                for (int coluna=0; coluna < n_colunas; coluna++){
+                    if(coluna == linha){
+                        printf("   %d", matriz[linha][coluna]);
+                    } else {
+                        printf("   -");
+                    };
+                };
+                printf("\n");
+            };
+            break;
+        case 3:
 
 
 
