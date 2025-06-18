@@ -1,4 +1,6 @@
 #include <stdio.h>
+#define n_linhas 3
+#define n_colunas 2
 
 int main() {
 
@@ -12,6 +14,15 @@ int main() {
     int matriz[3][2] = {{1, 2}, {4, 5}, {7, 8}};
 
 
+    for (int linha = 0; linha < n_linhas; linha++) {
+
+        for (int coluna = 0; coluna < n_colunas; coluna++){
+            printf("Endereco: [%d][%d] - ", linha, coluna);
+        
+
+        };
+        printf("\n");
+    };
 
 
 
