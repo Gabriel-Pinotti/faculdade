@@ -6,8 +6,11 @@ int main() {
     int escolhaExibicao;
     int matriz[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}; // declaração inicial da matriz
 
-
+    
     // usuário poderá ver: 1- matriz completa, 2- diagonal principal, 3- triângulo superior, 4- triângulo inferior, 5- sair
+
+    
+    while (1==1){
 
     do { // tratamento de dados para entrada válida
     printf("Menu:\n1- Matriz Completa\n2- Diagonal Principal\n3- Triangulo Superior\n4- Triangulo Inferior\n5- Sair\nEscolha uma opcao: ");
@@ -27,9 +30,9 @@ int main() {
                 };
                 printf("\n"); // para exibir a próxima linha
             };
-            break;
+            continue;
         case 2:
-            for (int linha =0; linha < n_linhas; linha++){
+            for (int linha =0; linha < n_linhas; linha++){ // for para imprimir a DIAGONAL PRINCIPAL
                 for (int coluna=0; coluna < n_colunas; coluna++){
                     if(coluna == linha){
                         printf("   %d", matriz[linha][coluna]);
@@ -39,18 +42,36 @@ int main() {
                 };
                 printf("\n");
             };
-            break;
+            continue;
         case 3:
-
-
-
-
-
-
-
+            for (int linha =0; linha < n_linhas; linha++){ // for para imprimir o TRIANGULO SUPERIOR
+                for (int coluna=0; coluna < n_colunas; coluna++){
+                    if(coluna > linha){
+                        printf("   %d", matriz[linha][coluna]);
+                    } else {
+                        printf("   -");
+                    };
+                };
+                printf("\n");
+            };
+            continue;
+        case 4:
+            for (int linha =0; linha < n_linhas; linha++){ // for para imprimir o TRIANGULO INFERIOR
+                for (int coluna=0; coluna < n_colunas; coluna++){
+                    if(coluna < linha){
+                        printf("   %d", matriz[linha][coluna]);
+                    } else {
+                        printf("   -");
+                    };
+                };
+                printf("\n");
+            };
+            continue;
+        case 5:
+            return 0;
     };
 
-
+};
 
 
 
