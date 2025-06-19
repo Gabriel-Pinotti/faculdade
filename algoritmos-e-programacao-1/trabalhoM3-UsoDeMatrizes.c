@@ -1,16 +1,14 @@
 #include <stdio.h>
 #define n_linhas 3
 #define n_colunas 3
+#define verdadeiro 1
+
+// usuário poderá ver: 1- matriz completa, 2- diagonal principal, 3- triângulo superior, 4- triângulo inferior, 5- sair
 
 int main() {
     int escolhaExibicao;
-    int matriz[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}; // declaração inicial da matriz
-
-    
-    // usuário poderá ver: 1- matriz completa, 2- diagonal principal, 3- triângulo superior, 4- triângulo inferior, 5- sair
-
-    
-    while (1==1){
+    int matriz[3][3] = {{29, 18, 14}, {71, 52, 31}, {23, 25, 83}}; // declaração inicial da matriz
+    while (verdadeiro){
 
     do { // tratamento de dados para entrada válida
     printf("Menu:\n1- Matriz Completa\n2- Diagonal Principal\n3- Triangulo Superior\n4- Triangulo Inferior\n5- Sair\nEscolha uma opcao: ");
@@ -19,7 +17,6 @@ int main() {
         printf("\n\n\nEntrada invalida, tente novamente\n");
     }
     } while (!(escolhaExibicao >= 1 && escolhaExibicao <= 5));
-
 
     printf("\n\n\n");
     switch(escolhaExibicao){
@@ -37,7 +34,7 @@ int main() {
                     if(coluna == linha){
                         printf("   %d", matriz[linha][coluna]);
                     } else {
-                        printf("   -");
+                        printf("   --");
                     };
                 };
                 printf("\n");
@@ -49,7 +46,7 @@ int main() {
                     if(coluna > linha){
                         printf("   %d", matriz[linha][coluna]);
                     } else {
-                        printf("   -");
+                        printf("   --");
                     };
                 };
                 printf("\n");
@@ -61,7 +58,7 @@ int main() {
                     if(coluna < linha){
                         printf("   %d", matriz[linha][coluna]);
                     } else {
-                        printf("   -");
+                        printf("   --");
                     };
                 };
                 printf("\n");
@@ -70,10 +67,6 @@ int main() {
         case 5:
             return 0;
     };
-
 };
-
-
-
     return 0;
 }
