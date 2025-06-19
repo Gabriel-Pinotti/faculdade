@@ -2,38 +2,28 @@
 #include <string.h>
 
 
-
 int main() {
-
-    //.
     //VARIÁVEIS COM VALOR REQUISITADO AO USUÁRIO
     float rendFamMensal, notaProcSelet, notaENEM, notaEnsinoM;
-    int ePCD = 0; //coloquei 0 predefinido para lembrar que o valor irá alternar entre 0 e 1
+    int numFamiliares, numFamiliaresBolsistas;
+    int ePCD = 0; // irá alternar entre 0 e 1
     int redePublica = 0;
-    int numFamiliares, numFamiliaresBolsistas, tipoBolsa;
-    //1 para bolsa INTEGRAL e 2 para bolsa PARCIAL
+    int tipoBolsa; //1 para bolsa INTEGRAL e 2 para bolsa PARCIAL
     char cursoPretendido[30];
-    //VARIÁVEIS COM VALOR REQUISITADO AO USUÁRIO
 
     //VARIÁVEIS DE USO INTERNO
-    int entradaInvalida = 0; //para verificação se a entrada do usuário é válida
-    float rendaPerCapita;
-    float notaFinal;
-    char resultadoBolsa[30];
     int bolsaConcedida = 0; // 0-nao concedida / 1- concedida
+    int entradaInvalida = 0;
+    float rendaPerCapita, notaFinal;
+    char resultadoBolsa[30];
     char motivoRecusa[200] = "RECUSADA | Motivo(s): ";
-    //VARIÁVEIS DE USO INTERNO
 
-
-    printf("\n\n\n\nBem vindo(a) ao Sistema de Avaliacao de Bolsa!");
+    printf("\n\n\nBem vindo(a) ao Sistema de Avaliacao de Bolsa!");
     printf("\nPara continuar, informe os dados abaixo!");
-
-
 
     printf("\n\nInsira a sua renda familiar mensal (em BRL): "); // RENDA FAMILIAR MENSAL
     scanf("%f", &rendFamMensal);
     do { 
-
         if (rendFamMensal <= 0){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -42,16 +32,11 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
-
-    }
-    while(entradaInvalida == 1);
-    
-
+    } while(entradaInvalida == 1);
     
     printf("\nInsira a sua nota do processo seletivo (de 0 a 10): "); // NOTA PROCESSO SELETIVO
     scanf("%f", &notaProcSelet);
     do { 
-
         if (notaProcSelet < 0 || notaProcSelet > 10){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -60,16 +45,11 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
-
-    }
-    while(entradaInvalida == 1);
-
-
+    } while(entradaInvalida == 1);
 
     printf("\nInsira a sua nota do ENEM (de 0 a 10): "); // NOTA ENEM
     scanf("%f", &notaENEM);
     do {
-
         if (notaENEM < 0 || notaENEM > 10){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -78,16 +58,11 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
-
-    }
-    while(entradaInvalida == 1);
-
-
+    } while(entradaInvalida == 1);
 
     printf("\nInsira a sua media global do ensino medio (de 0 a 10): "); // NOTA ENSINO MÉDIO
     scanf("%f", &notaEnsinoM);
     do {
-
         if (notaEnsinoM < 0 || notaEnsinoM > 10){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -96,16 +71,11 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
-
-    }
-    while(entradaInvalida == 1);
-
-
+    } while(entradaInvalida == 1);
 
     printf("\nVoce possui alguma deficiencia? (1-SIM | 0-NAO): "); // PESSOA COM DEFICIÊNCIA
     scanf("%d", &ePCD);
     do {
-
         if (ePCD!=0 && ePCD!=1){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -114,16 +84,11 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
-
-    }
-    while(entradaInvalida == 1);
-
-
+    } while(entradaInvalida == 1);
 
     printf("\nVoce foi aluno de rede publica? (1-SIM | 0-NAO): "); // REDE PUBLICA
     scanf("%d", &redePublica);
     do {
-
         if (redePublica!=0 && redePublica!=1){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -132,16 +97,11 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
+    } while(entradaInvalida == 1);
 
-    }
-    while(entradaInvalida == 1);
-
-
-
-    printf("\nInsira a quantidade de familiares que residem com voce: "); // NOTA ENSINO MÉDIO
-    scanf("%d", &numFamiliares);  //------------------------------------------------------------IGUAL A ZERO PODE, NAO?
+    printf("\nInsira a quantidade de familiares que residem com voce: "); // QTD FAMILIARES RESIDEM
+    scanf("%d", &numFamiliares);
     do {
-
         if (numFamiliares<=0){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -150,13 +110,9 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
+    } while(entradaInvalida == 1);
 
-    }
-    while(entradaInvalida == 1);
-
-
-
-    printf("\nInsira a quantidade de familiares que sao bolsistas na universidade: "); // NOTA ENSINO MÉDIO
+    printf("\nInsira a quantidade de familiares que sao bolsistas na universidade: "); // QTD FAMILIARES BOLSISTAS
     scanf("%d", &numFamiliaresBolsistas);
     do {
 
@@ -169,15 +125,11 @@ int main() {
             entradaInvalida = 0;
         };
 
-    }
-    while(entradaInvalida == 1);
-
-
+    } while(entradaInvalida == 1);
 
     printf("\nQual o tipo de bolsa desejada? (1-INTEGRAL | 2-PARCIAL): "); // TIPO BOLSA
     scanf("%d", &tipoBolsa);
     do {
-
         if (tipoBolsa!=1&&tipoBolsa!=2){
             entradaInvalida = 1;
             printf("\n\n\nEntrada invalida, tente novamente");
@@ -186,59 +138,48 @@ int main() {
         } else {
             entradaInvalida = 0;
         };
-
-    }
-    while(entradaInvalida == 1);
+    } while(entradaInvalida == 1);
 
     getchar();
     printf("\nInforme o curso pretendido: "); // CURSO PRETENDIDO
     fgets(cursoPretendido, sizeof(cursoPretendido), stdin);
     cursoPretendido[strcspn(cursoPretendido, "\n")] = '\0';
 
-
-    // OPERAÇÕES INTERNAS PARA CÁLCULO FINAL
+    // OPERAÇÕES PARA CÁLCULO FINAL
     rendaPerCapita = (rendFamMensal/(numFamiliares+1));
     notaFinal = ((notaProcSelet*0.4) + (notaENEM*0.3) + (notaEnsinoM*0.3));
 
-
-
     switch(tipoBolsa) { // 1-integral / 2-parcial
         case 1:
-            if (rendaPerCapita <=800 && notaFinal >= 8.0 && (ePCD == 1 || redePublica == 1) && numFamiliaresBolsistas == 0) { // tudo ok!
+            if (rendaPerCapita <=800 && notaFinal >= 8.0 && (ePCD == 1 || redePublica == 1) && numFamiliaresBolsistas == 0) {
                 bolsaConcedida = 1;
             }
-            else { // adicionando na lista os motivos de recusa
+            else { // adiciona na lista os motivos de recusa
                 if (rendaPerCapita > 800) { // renda per capita
                     if (strlen(motivoRecusa) != 22){ // impedir a lista de ficar mal formatada
                         strcat(motivoRecusa, ", ");
+                    };
+                    strcat(motivoRecusa, "renda per capita maior que 800.00");
                 };
-                strcat(motivoRecusa, "renda per capita maior que 800.00");
-                };
-
                 if (notaFinal < 8.0) { // nota final
                     if (strlen(motivoRecusa) != 22){
                         strcat(motivoRecusa, ", ");
+                    };
+                    strcat(motivoRecusa, "nota final inferior a 7.0");
                 };
-                strcat(motivoRecusa, "nota final inferior a 7.0");
-                };
-
                 if (!(ePCD == 1 || redePublica == 1)) { // PCD ou rede pública
                     if (strlen(motivoRecusa) != 22){
                         strcat(motivoRecusa, ", ");
+                    };
+                    strcat(motivoRecusa, "nao possui deficiencia ou estudou em rede publica");
                 };
-                strcat(motivoRecusa, "nao possui deficiencia ou estudou em rede publica");
-                };
-
                 if (numFamiliaresBolsistas > 0) { // numero familiares bolsistas
                     if (strlen(motivoRecusa) != 22){
                         strcat(motivoRecusa, ", ");
+                    };
+                    strcat(motivoRecusa, "ja possui familiar bolsista");
                 };
-                strcat(motivoRecusa, "ja possui familiar bolsista");
-                };
-        
             };
-
-
             break;
         case 2:
             if ((ePCD == 1 || redePublica == 1)){
@@ -248,25 +189,21 @@ int main() {
                     if (rendaPerCapita > 1600) { // renda per capita
                         if (strlen(motivoRecusa) != 22){ // impedir a lista de ficar mal formatada
                             strcat(motivoRecusa, ", ");
+                        };
+                        strcat(motivoRecusa, "renda per capita maior que 1600.00");
                     };
-                    strcat(motivoRecusa, "renda per capita maior que 1600.00");
-                    };
-    
                     if (notaFinal < 6) { // nota final
                         if (strlen(motivoRecusa) != 22){
                             strcat(motivoRecusa, ", ");
+                        };
+                        strcat(motivoRecusa, "nota final inferior a 6.0");
                     };
-                    strcat(motivoRecusa, "nota final inferior a 6.0");
-                    };
-    
                     if (numFamiliaresBolsistas > 1) { // numero familiares bolsistas
                         if (strlen(motivoRecusa) != 22){
                             strcat(motivoRecusa, ", ");
+                        };
+                        strcat(motivoRecusa, "possui mais de 1 familiar bolsista");
                     };
-                    strcat(motivoRecusa, "possui mais de 1 familiar bolsista");
-                    };
-            
-
                 };
             };
 
@@ -277,30 +214,23 @@ int main() {
                     if (rendaPerCapita > 1600) { // renda per capita
                         if (strlen(motivoRecusa) != 22){ // impedir a lista de ficar mal formatada
                             strcat(motivoRecusa, ", ");
+                        };
+                        strcat(motivoRecusa, "renda per capita maior que 1600.00");
                     };
-                    strcat(motivoRecusa, "renda per capita maior que 1600.00");
-                    };
-    
                     if (notaFinal < 7.5) { // nota final
                         if (strlen(motivoRecusa) != 22){
                             strcat(motivoRecusa, ", ");
+                        };
+                        strcat(motivoRecusa, "nota final inferior a 7.5");
                     };
-                    strcat(motivoRecusa, "nota final inferior a 7.5");
-                    };
-    
                     if (numFamiliaresBolsistas > 1) { // numero familiares bolsistas
                         if (strlen(motivoRecusa) != 22){
                             strcat(motivoRecusa, ", ");
+                        };
+                        strcat(motivoRecusa, "possui mais de 1 familiar bolsista");
                     };
-                    strcat(motivoRecusa, "possui mais de 1 familiar bolsista");
-                    };
-            
-
                 };
             };
-
-
-            
             break;
     };
 
@@ -327,7 +257,6 @@ int main() {
                 break;
         };
     };
-
     printf("\nPressione ENTER para sair");
     getchar();
 
