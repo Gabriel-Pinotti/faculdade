@@ -10,11 +10,7 @@ int main()
     char selecao[3];
     int selecionando = 0;
 
-
-
     do {
-
-
     printf("\nCadeiras disponiveis:\n"); //exibicao
     for (int i=0; i<10; i++) { //A
         fA[i] == 0 ? printf("[A%d]", i+1) : printf("[XX]");
@@ -27,11 +23,9 @@ int main()
     for (int i=0; i<10; i++) { //C
         fC[i] == 0 ? printf("[C%d]", i+1) : printf("[XX]");
     };
+
     printf("\n\nSelecione a cadeira desejada: ");
     scanf("%s", selecao);
-
-
-
     if (selecao[0] != 'A' && selecao[0] != 'B' && selecao[0] != 'C') { //verificacao
         printf("\nEntrada invalida\n");
         printf("Continuar? (1- sim / 0- nao): ");
@@ -39,7 +33,7 @@ int main()
         continue;
     };
 
-    if (isdigit(selecao[2])) {
+    if (isdigit(selecao[2])) { // tratamento de dados
         int dig1temp = selecao[1]-'0';
         int dig2temp = selecao[2]-'0';
         selecionando = (dig1temp*10) + dig2temp;
@@ -58,32 +52,33 @@ int main()
             if (fA[selecionando-1] == 0){
                 fA[selecionando-1] = 1;
                 printf("\nAssento A%d reservado\n", selecionando);
-            } else {printf("\nAssento ocupado");};
+            } else {
+                printf("\nAssento ocupado");
+            };
             printf("\nContinuar? (1- sim / 0- nao): ");
             scanf("%d", &continuar);
             continue;
-        break;
-
         case 'B':
             if (fB[selecionando-1] == 0){
                 fB[selecionando-1] = 1;
                 printf("\nAssento B%d reservado\n", selecionando);
-            } else {printf("\nAssento ocupado");};
+            } else {
+                printf("\nAssento ocupado");
+            };
             printf("\nContinuar? (1- sim / 0- nao): ");
             scanf("%d", &continuar);
             continue;
-        break;
         case 'C':
             if (fC[selecionando-1] == 0){
                 fC[selecionando-1] = 1;
                 printf("\nAssento C%d reservado\n", selecionando);
-            } else {printf("\nAssento ocupado");};
+            } else {
+                printf("\nAssento ocupado");
+            };
             printf("\nContinuar? (1- sim / 0- nao): ");
             scanf("%d", &continuar);
             continue;
-        break;
     }
-
     } while (continuar == 1);
-
+    return 0;
 }
