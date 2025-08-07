@@ -26,7 +26,7 @@ while (linha_atual < linhas) {
     while (coluna_atual < colunas){
 
         int aleatorio = rand()%15;
-        matriz[linha_atual, coluna_atual] = aleatorio;
+        matriz[linha_atual][coluna_atual] = aleatorio;
         ++coluna_atual;
     }
 
