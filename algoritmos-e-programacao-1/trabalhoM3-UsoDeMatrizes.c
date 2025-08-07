@@ -7,7 +7,7 @@
 
 int main() {
     int escolhaExibicao;
-    int matriz[3][3] = {{29, 18, 14}, {71, 52, 31}, {23, 25, 83}}; // declaração inicial da matriz
+    int matriz[3][3] = {{29, 18, 14}, {71, 25, 31}, {23, 25, 83}}; // declaração inicial da matriz
     while (verdadeiro){
 
     do { // tratamento de dados para entrada válida

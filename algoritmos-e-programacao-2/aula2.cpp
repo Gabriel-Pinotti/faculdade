@@ -25,10 +25,24 @@ while (linha_atual < linhas) {
     int coluna_atual = 0;
     while (coluna_atual < colunas){
 
-        int aleatorio = rand()%15;
+        int aleatorio = rand()%10;
         matriz[linha_atual][coluna_atual] = aleatorio;
         ++coluna_atual;
     }
+
+    ++linha_atual;
+};
+
+linha_atual = 0;
+while (linha_atual < linhas) {
+
+    int coluna_atual = 0;
+    while (coluna_atual < colunas){        
+
+        cout << matriz[linha_atual][coluna_atual] << " ";
+        ++coluna_atual;
+    }
+    cout << endl;
 
     ++linha_atual;
 };
