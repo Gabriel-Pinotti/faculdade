@@ -2,7 +2,9 @@
 
 #include <iostream>
 
+using namespace std;
+
 int main() {
-    std::cout << "isso é um print" << std::endl;
+    cout << "isso é um print" << endl;
     return 0;
 }
