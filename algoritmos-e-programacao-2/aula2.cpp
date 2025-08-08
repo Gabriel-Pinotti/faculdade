@@ -10,7 +10,6 @@ int main() {
 // soma dos elementos da linha 2
 // soma dos elementos da coluna 4
 // soma dos elementos da diagonal principal
-// soma dos elementos da diagonal secundaria
 // soma dos elementos de toda a matriz
 
 int matriz[5][5];
@@ -57,7 +56,7 @@ while (linha_atual < linhas) {
 // selecionar função
 
 cout <<  endl << "   O que deseja fazer?" << endl << "1- Soma dos itens da linha 2" << endl << "2- Soma dos itens da coluna 4" << endl << "3- Soma dos itens da DP";
-cout << endl << "4- Soma dos itens da DS" << endl << "5- Soma de todos os itens da matriz" << endl << endl << "Resposta: ";
+cout << endl << "4- Soma de todos os itens da matriz" << endl << endl << "Resposta: ";
 cin >> escolha_funcao;
 
 cout << endl << endl;
@@ -97,7 +96,19 @@ switch (escolha_funcao) {
         cout << tempSoma << endl;
         break;
 
-
+    case 4:
+        tempSoma = 0;
+        linha_atual = 0;
+        while (linha_atual < linhas) {
+            int coluna_atual = 0;
+            while (coluna_atual < colunas){       
+                tempSoma += matriz[linha_atual][coluna_atual];
+                ++coluna_atual;
+            }
+            ++linha_atual;
+        };
+        cout << tempSoma << endl;
+        break;  
 }
 
 
