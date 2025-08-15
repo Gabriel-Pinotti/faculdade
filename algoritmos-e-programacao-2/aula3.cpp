@@ -46,12 +46,23 @@ int funcao7(int numBase, int numPotencia = 2){
 };
 
 char funcao8(char ch){
-    cout << endl << "Isalpha: " << isalpha(ch) << endl;
     if (isalpha(ch) != 0) {
         return tolower(ch);
     } else {
         return ch;
     }
+};
+
+void funcao9(string &str, char ch){
+    cout << endl << "str: " << str << endl << "ch: " << ch << endl;
+    // string = "__d" | char = "a" | output = "aad"
+    //cout << endl << "sizeof: " << str.size() << endl;
+    for (int i = 0; i < str.size(); ++i){
+        cout << endl << str << endl;
+        if (str[i] == '_'){
+            str[i] = ch;
+        };
+    };
 };
 
 
@@ -70,7 +81,7 @@ int main() {
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
     // cin >> selecaoDeFuncao;
-    selecaoDeFuncao = 8; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    selecaoDeFuncao = 9; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -155,8 +166,18 @@ int main() {
             func8_result = funcao8(func8_ch);
             cout << endl << "Resultado: " << func8_result << endl << endl;
             break;
-
-
+        case 9:
+        {
+            string func9_str;
+            char func9_char;
+            cout << endl << endl << "Digite uma frase: ";
+            getline(cin, func9_str);
+            cout << endl << "Digite um caractere: ";
+            cin >> func9_char;
+            funcao9(func9_str, func9_char);
+            cout << endl << "Resultado: " << func9_str << endl << endl;
+        }
+            break;
 
 
 
@@ -166,4 +187,4 @@ int main() {
         return 0;
     };
     return 0;
-}
+} 
