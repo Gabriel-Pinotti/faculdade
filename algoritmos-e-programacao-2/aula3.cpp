@@ -1,4 +1,9 @@
 #include <iostream>
+#include <algorithm>
+#include <string>
+#include <limits>
+
+
 using namespace std;
 
 int funcao1(int num1, int num2) {
@@ -9,7 +14,7 @@ void funcao2(int &num){
     num *=2;
 };
 
-int funcao3(int num){ // 1 = par | 2 = ímpar
+int funcao3(int num){ // 0 = par | 1 = ímpar
     if (num % 2 == 1){
         return 0    ;
     } else {
@@ -23,6 +28,11 @@ int funcao4(int num1, int num2){
     } else {
         return num2;
     }
+};
+
+int funcao5(string str, char ch){
+    long result = count(str.begin(), str.end(), ch);
+    return result;
 };
 
 
@@ -86,7 +96,20 @@ int main() {
             func4_resultado = funcao4(func4_num1, func4_num2);
             cout << endl << "Maior: " << func4_resultado << endl << endl;
             break;
-
+        case 5:
+        {
+            string func5_string;
+            char func5_char;
+            int func5_resultado;
+            cout << endl << endl << "Digite a frase: ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(cin, func5_string);
+            cout << endl << "Digite o caractere: ";
+            cin >> func5_char;
+            func5_resultado = funcao5(func5_string, func5_char);
+            cout << endl << "Quantidade de vezes que apareceu: " << func5_resultado << endl << endl;
+        }
+            break;
 
 
 
