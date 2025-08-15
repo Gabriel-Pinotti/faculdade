@@ -17,6 +17,14 @@ int funcao3(int num){ // 1 = par | 2 = ímpar
     };
 };
 
+int funcao4(int num1, int num2){
+    if (num1 - num2 >= 0) {
+        return num1;
+    } else {
+        return num2;
+    }
+};
+
 
 
 int main() {
@@ -67,7 +75,17 @@ int main() {
                 cout << endl << "É ímpar" << endl << endl;
                 break;
             };
-
+        case 4:
+            int func4_num1;
+            int func4_num2;
+            int func4_resultado;
+            cout << endl << endl << "Digite o primeiro número: ";
+            cin >> func4_num1;
+            cout << endl << "Digite o segundo número: ";
+            cin >> func4_num2;
+            func4_resultado = funcao4(func4_num1, func4_num2);
+            cout << endl << "Maior: " << func4_resultado << endl << endl;
+            break;
 
 
 
