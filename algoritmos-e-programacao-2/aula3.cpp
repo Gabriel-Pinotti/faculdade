@@ -3,6 +3,7 @@
 #include <string>
 #include <limits>
 #include <cmath>
+#include <cctype>
 
 using namespace std;
 
@@ -44,6 +45,16 @@ int funcao7(int numBase, int numPotencia = 2){
     return resultado;
 };
 
+char funcao8(char ch){
+    cout << endl << "Isalpha: " << isalpha(ch) << endl;
+    if (isalpha(ch) != 0) {
+        return tolower(ch);
+    } else {
+        return ch;
+    }
+};
+
+
 
 int main() {
 
@@ -58,8 +69,8 @@ int main() {
     cout << "15) Remover duplicatas" << endl << "16) Estatisticas de vetor" << endl << "17) Busca linear modular" << endl;
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
-    cin >> selecaoDeFuncao;
-
+    // cin >> selecaoDeFuncao;
+    selecaoDeFuncao = 8; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -136,6 +147,17 @@ int main() {
             }; 
             cout << endl << "Resultado: " << func7_resultado << endl << endl;
             break;
+        case 8:
+            char func8_ch;
+            char func8_result;
+            cout << endl << endl << "Informe um digito: ";
+            cin >> func8_ch;
+            func8_result = funcao8(func8_ch);
+            cout << endl << "Resultado: " << func8_result << endl << endl;
+            break;
+
+
+
 
 
 
