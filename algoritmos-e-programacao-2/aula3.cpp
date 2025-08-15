@@ -117,6 +117,10 @@ int main() {
         case 6:
             funcao6();
             break;
+        case 7:
+            int func7_numBase;
+            int func7_numPotencia;
+            break;
 
 
 
