@@ -7,6 +7,11 @@
 
 using namespace std;
 
+void limpaBuffer() {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+};
+
 int funcao1(int num1, int num2) {
     return (num1 + num2);
 };
@@ -54,11 +59,7 @@ char funcao8(char ch){
 };
 
 void funcao9(string &str, char ch){
-    cout << endl << "str: " << str << endl << "ch: " << ch << endl;
-    // string = "__d" | char = "a" | output = "aad"
-    //cout << endl << "sizeof: " << str.size() << endl;
     for (int i = 0; i < str.size(); ++i){
-        cout << endl << str << endl;
         if (str[i] == '_'){
             str[i] = ch;
         };
@@ -80,8 +81,8 @@ int main() {
     cout << "15) Remover duplicatas" << endl << "16) Estatisticas de vetor" << endl << "17) Busca linear modular" << endl;
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
-    // cin >> selecaoDeFuncao;
-    selecaoDeFuncao = 9; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    cin >> selecaoDeFuncao;
+    // selecaoDeFuncao = 9; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -132,7 +133,7 @@ int main() {
             char func5_char;
             int func5_resultado;
             cout << endl << endl << "Digite a frase: ";
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            limpaBuffer();
             getline(cin, func5_string);
             cout << endl << "Digite o caractere: ";
             cin >> func5_char;
@@ -171,6 +172,7 @@ int main() {
             string func9_str;
             char func9_char;
             cout << endl << endl << "Digite uma frase: ";
+            limpaBuffer();
             getline(cin, func9_str);
             cout << endl << "Digite um caractere: ";
             cin >> func9_char;
