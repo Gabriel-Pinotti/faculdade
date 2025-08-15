@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <string>
 #include <limits>
-
+#include <cmath>
 
 using namespace std;
 
@@ -39,6 +39,10 @@ void funcao6(){
     cout << endl << "   1- Jogar" << endl << "   2- Configurações" << endl << "   3- Sair" << endl << endl;
 };
 
+int funcao7(int numBase, int numPotencia = 2){
+    int resultado = pow(numBase, numPotencia);
+    return resultado;
+};
 
 
 int main() {
@@ -120,6 +124,17 @@ int main() {
         case 7:
             int func7_numBase;
             int func7_numPotencia;
+            int func7_resultado;
+            cout << endl << endl << "Digite o número base: ";
+            cin >> func7_numBase;
+            cout << endl << "Digite a potência: ";
+            cin >> func7_numPotencia;
+            if (func7_numPotencia < 1) {
+                func7_resultado = funcao7(func7_numBase);
+            } else {
+                func7_resultado = funcao7(func7_numBase, func7_numPotencia);
+            }; 
+            cout << endl << "Resultado: " << func7_resultado << endl << endl;
             break;
 
 
