@@ -35,6 +35,10 @@ int funcao5(string str, char ch){
     return result;
 };
 
+void funcao6(){
+    cout << endl << "   1- Jogar" << endl << "   2- Configurações" << endl << "   3- Sair" << endl << endl;
+};
+
 
 
 int main() {
@@ -110,10 +114,14 @@ int main() {
             cout << endl << "Quantidade de vezes que apareceu: " << func5_resultado << endl << endl;
         }
             break;
+        case 6:
+            funcao6();
+            break;
 
 
 
     default:
+        cout << "Função em manutenção ou inexistente, tente novamente mais tarde";
         return 0;
     };
     return 0;
