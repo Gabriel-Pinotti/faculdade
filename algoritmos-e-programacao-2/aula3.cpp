@@ -83,14 +83,17 @@ void funcao11_lerNota(double &num){
         if (num <= 10 && num >= 0){
             func11_respostaValidada = true;
         } else {
-            cout << endl << "Resposta inválida, deve estar entre 0 e 10" << endl;
+            cout << "INVALIDO: a resposta deve estar entre 0 e 10" << endl;
         };
     } while (
         func11_respostaValidada == false
     );
-    cout << endl << "Resposta validada" << endl;
+    cout << "[Resposta validada]" << endl;
 };
 
+double funcao11_media(double num1, double num2, double num3){
+    return (num1 + num2 + num3)/3;
+};
 
 
 int main() {
@@ -231,7 +234,8 @@ int main() {
             funcao11_lerNota(func11_num1);
             funcao11_lerNota(func11_num2);
             funcao11_lerNota(func11_num3);
-            cout << endl << ((func11_num1 + func11_num2 + func11_num3) / 3) << endl;
+            func11_media = funcao11_media(func11_num1, func11_num2, func11_num3);
+            cout << endl << "A média é " << func11_media << endl << endl;
 
 
             break;
