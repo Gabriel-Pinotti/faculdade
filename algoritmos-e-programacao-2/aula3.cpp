@@ -37,8 +37,8 @@ int funcao4(int num1, int num2){
 };
 
 int funcao5(string str, char ch){
-    long result = count(str.begin(), str.end(), ch);
-    return result;
+    long funcao5_resultado = count(str.begin(), str.end(), ch);
+    return funcao5_resultado;
 };
 
 void funcao6(){
@@ -46,8 +46,8 @@ void funcao6(){
 };
 
 int funcao7(int numBase, int numPotencia = 2){
-    int resultado = pow(numBase, numPotencia);
-    return resultado;
+    int funcao7_resultado = pow(numBase, numPotencia);
+    return funcao7_resultado;
 };
 
 char funcao8(char ch){
@@ -66,6 +66,31 @@ void funcao9(string &str, char ch){
     };
 };
 
+string funcao10(int num, char ch = '_'){
+    string func10_resultado = "";
+    for (int i = 0; i < num; ++i){
+        func10_resultado += ch;
+    };
+    return func10_resultado;
+}
+
+
+void funcao11_lerNota(double &num){
+    bool func11_respostaValidada = false;
+    do {
+        cout << endl << endl << "Insira um número: ";
+        cin >> num;
+        if (num <= 10 && num >= 0){
+            func11_respostaValidada = true;
+        } else {
+            cout << endl << "Resposta inválida, deve estar entre 0 e 10" << endl;
+        };
+    } while (
+        func11_respostaValidada == false
+    );
+    cout << endl << "Resposta validada" << endl;
+};
+
 
 
 int main() {
@@ -81,8 +106,8 @@ int main() {
     cout << "15) Remover duplicatas" << endl << "16) Estatisticas de vetor" << endl << "17) Busca linear modular" << endl;
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
-    cin >> selecaoDeFuncao;
-    // selecaoDeFuncao = 9; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    // cin >> selecaoDeFuncao;
+    selecaoDeFuncao = 11; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -180,8 +205,36 @@ int main() {
             cout << endl << "Resultado: " << func9_str << endl << endl;
         }
             break;
+        case 10:
+        {
+            int func10_num;
+            string func10_char;
+            string func10_resultado;
+            cout << endl << endl << "Digite um número: ";
+            cin >> func10_num;
+            cout << endl << "Digite um caractere: ";
+            limpaBuffer();
+            getline(cin, func10_char);
+            if (!func10_char.empty()) {
+                func10_resultado = funcao10(func10_num, func10_char[0]);
+            } else {
+                func10_resultado = funcao10(func10_num);   
+            };
+            cout << endl << "Resultado: " << func10_resultado << endl << endl;
+        }
+            break;
+        case 11:
+            double func11_num1;
+            double func11_num2;
+            double func11_num3;
+            double func11_media;
+            funcao11_lerNota(func11_num1);
+            funcao11_lerNota(func11_num2);
+            funcao11_lerNota(func11_num3);
+            cout << endl << ((func11_num1 + func11_num2 + func11_num3) / 3) << endl;
 
 
+            break;
 
 
     default:
