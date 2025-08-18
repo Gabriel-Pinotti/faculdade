@@ -127,18 +127,13 @@ void funcao13(string str, int &vog, int &cons){
 
     for (int i = 0; i < str.length(); ++i){
         if (find(begin(func13_temp_cons), end(func13_temp_cons), tolower(str[i])) != end(func13_temp_cons)){
-            cout << endl << "[achou cons]" << endl;
             ++cons;
             continue;
         };
         if (find(begin(func13_temp_vog), end(func13_temp_vog), tolower(str[i])) != end(func13_temp_vog)){
-            cout << endl << "[achou vog]" << endl;
             ++vog;
             continue;
-        };        
-
-
-        //verificar tolower(str[i]) dentro de array de consoantes e array de vogais, somar int
+        };
     };
 };
 
