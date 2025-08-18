@@ -96,26 +96,32 @@ double funcao11_media(double num1, double num2, double num3){
 };
 
 void funcao12(string &str){
-    // remover espaços no começo e no final se existirem
     bool func12_ultimo_foi_espaco = false;
 
     while(str[0] == ' ') {
         str.erase(0, 1);
     };
-    while(str.back() == ' ') {
-        str.erase(str.back(), 1);
+    while(str[str.length()-1] == ' ') {
+        str.erase(str.length()-1, 1);
     };
-
-
-
     
     for(int i = 0; i < str.length(); ++i){
-        // string func12_strtemp;
-        // func12_strtemp += tolower(str[i])
-        // iterar sobre cada caractere, verificando duplicidade de espaços e colocando em lowercase
-    }
+        if (str[i] != ' ') {
+            func12_ultimo_foi_espaco = false;
+            str[i] = tolower(str[i]);
+            continue;
+        };
+        if (func12_ultimo_foi_espaco == true) {
+            str.erase(i, 1);
+            --i;
+        };
+        func12_ultimo_foi_espaco = true;
+    }  
 };
 
+void funcao13(string str, int &vog, int &cons){
+    
+};
 
 
 int main() {
@@ -132,7 +138,7 @@ int main() {
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
     // cin >> selecaoDeFuncao;
-    selecaoDeFuncao = 11; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    selecaoDeFuncao = 12; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -262,10 +268,21 @@ int main() {
         case 12:
         {
             string func12_str;
-            cout << endl << "Digite uma frase: " << endl;
-            limpaBuffer();
+            cout << endl << "Digite uma frase: ";
             getline(cin, func12_str);
-            //funcao12(func12_str);
+            funcao12(func12_str);
+            cout << endl << "Frase formatada: " << func12_str << endl;
+        }
+            break;
+        case 13:
+        {
+            string func13_str;
+            int func13_vogais;
+            int func13_consoantes;
+            cout << endl << "Digite uma frase: ";
+            getline(cin, func13_str);
+            //funcao13(func13_str, func13_vogais, func13_consoantes);
+            cout << endl << "[VOGAIS] = " << func13_vogais << endl << "[CONSOANTES] = " << func13_consoantes << endl;
         }
             break;
 
