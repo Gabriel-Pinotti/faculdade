@@ -120,7 +120,9 @@ void funcao12(string &str){
 };
 
 void funcao13(string str, int &vog, int &cons){
-    
+    for (int i = 0; i < str.length(); ++i){
+        //verificar tolower(str[i]) dentro de array de consoantes e array de vogais, somar int
+    };
 };
 
 
