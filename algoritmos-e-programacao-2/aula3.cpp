@@ -137,10 +137,17 @@ void funcao13(string str, int &vog, int &cons){
     };
 };
 
+char funcao14(string str){
+    char func14_max_temp = count(str.begin(), str.end(), str[0]);
+    for (int i = 0; i < str.length(); ++i){
+        if (count(str.begin(), str.end(), str[i]) > count(str.begin(), str.end(), func14_max_temp)){
+            func14_max_temp = str[i];
+        };
+    }
+    return func14_max_temp;
+};
 
 int main() {
-
-    // declaração de variáveis
     int selecaoDeFuncao = 0;
 
     cout << "======== MENU ========" << endl << endl << "1) Soma de dois números" << endl << "2) Dobrar valor" << endl;
@@ -152,7 +159,7 @@ int main() {
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
     // cin >> selecaoDeFuncao;
-    selecaoDeFuncao = 13; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    selecaoDeFuncao = 14; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -299,7 +306,16 @@ int main() {
             cout << endl << "[VOGAIS] = " << func13_vogais << endl << "[CONSOANTES] = " << func13_consoantes << endl;
         }
             break;
-
+        case 14:
+        {
+            string func14_str;
+            char func14_resultado;
+            cout << endl << "Digite uma frase: ";
+            getline(cin, func14_str);
+            func14_resultado = funcao14(func14_str);
+            cout << endl << "Caractere mais frequente: " << func14_resultado << endl;
+        }            
+            break;
 
 
 
