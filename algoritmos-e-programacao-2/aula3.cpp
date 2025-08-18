@@ -3,6 +3,7 @@
 #include <string>
 #include <limits>
 #include <cmath>
+#include <iterator>
 #include <cctype>
 
 using namespace std;
@@ -120,7 +121,23 @@ void funcao12(string &str){
 };
 
 void funcao13(string str, int &vog, int &cons){
+    char func13_temp_cons[21] = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
+    char func13_temp_vog[5] = {'a', 'e', 'i', 'o', 'u'};
+
+
     for (int i = 0; i < str.length(); ++i){
+        if (find(begin(func13_temp_cons), end(func13_temp_cons), tolower(str[i])) != end(func13_temp_cons)){
+            cout << endl << "[achou cons]" << endl;
+            ++cons;
+            continue;
+        };
+        if (find(begin(func13_temp_vog), end(func13_temp_vog), tolower(str[i])) != end(func13_temp_vog)){
+            cout << endl << "[achou vog]" << endl;
+            ++vog;
+            continue;
+        };        
+
+
         //verificar tolower(str[i]) dentro de array de consoantes e array de vogais, somar int
     };
 };
@@ -140,7 +157,7 @@ int main() {
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
     // cin >> selecaoDeFuncao;
-    selecaoDeFuncao = 12; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    selecaoDeFuncao = 13; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -279,11 +296,11 @@ int main() {
         case 13:
         {
             string func13_str;
-            int func13_vogais;
-            int func13_consoantes;
+            int func13_vogais = 0;
+            int func13_consoantes = 0;
             cout << endl << "Digite uma frase: ";
             getline(cin, func13_str);
-            //funcao13(func13_str, func13_vogais, func13_consoantes);
+            funcao13(func13_str, func13_vogais, func13_consoantes);
             cout << endl << "[VOGAIS] = " << func13_vogais << endl << "[CONSOANTES] = " << func13_consoantes << endl;
         }
             break;
