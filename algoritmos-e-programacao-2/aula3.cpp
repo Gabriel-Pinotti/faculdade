@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iterator>
 #include <cctype>
+#include <cstring>
 
 using namespace std;
 
@@ -148,6 +149,18 @@ void funcao14(string str, char &ch_maisfreq, int &freq){
     freq = count(str.begin(), str.end(), ch_maisfreq);
 };
 
+void funcao15(string &str){
+    char func15_apareceu[100] = {};
+    for (int i = 0; i < str.length(); ++i){
+        if (find(begin(func15_apareceu), end(func15_apareceu), tolower(str[i])) != end(func15_apareceu)){
+            str.erase(i, 1);
+            --i;
+        } else {
+            func15_apareceu[strlen(func15_apareceu)] = str[i];
+        };
+    };
+}
+
 int main() {
     int selecaoDeFuncao = 0;
 
@@ -160,7 +173,7 @@ int main() {
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
     // cin >> selecaoDeFuncao;
-    selecaoDeFuncao = 14; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    selecaoDeFuncao = 15; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -319,9 +332,15 @@ int main() {
             cout << "Quantas vezes apareceu: " << func14_frequencia << endl;
         }            
             break;
-
-
-
+        case 15:
+        {
+            string func15_str;
+            cout << endl << "Digite uma frase: ";
+            getline(cin, func15_str);
+            funcao15(func15_str);
+            cout << endl << "Resultado: " << func15_str << endl;
+        }
+            break;
 
     default:
         cout << "Função em manutenção ou inexistente, tente novamente mais tarde";
