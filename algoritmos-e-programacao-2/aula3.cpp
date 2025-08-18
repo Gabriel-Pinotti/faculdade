@@ -96,9 +96,23 @@ double funcao11_media(double num1, double num2, double num3){
 };
 
 void funcao12(string &str){
+    // remover espaços no começo e no final se existirem
+    bool func12_ultimo_foi_espaco = false;
+
+    while(str[0] == ' ') {
+        str.erase(0, 1);
+    };
+    while(str.back() == ' ') {
+        str.erase(str.back(), 1);
+    };
+
+
+
+    
     for(int i = 0; i < str.length(); ++i){
+        // string func12_strtemp;
+        // func12_strtemp += tolower(str[i])
         // iterar sobre cada caractere, verificando duplicidade de espaços e colocando em lowercase
-        // remover espaços no começo e no final se existirem
     }
 };
 
