@@ -95,6 +95,14 @@ double funcao11_media(double num1, double num2, double num3){
     return (num1 + num2 + num3)/3;
 };
 
+void funcao12(string &str){
+    for(int i = 0; i < str.length(); ++i){
+        // iterar sobre cada caractere, verificando duplicidade de espaços e colocando em lowercase
+        // remover espaços no começo e no final se existirem
+    }
+};
+
+
 
 int main() {
 
@@ -235,10 +243,20 @@ int main() {
             funcao11_lerNota(func11_num2);
             funcao11_lerNota(func11_num3);
             func11_media = funcao11_media(func11_num1, func11_num2, func11_num3);
-            cout << endl << "A média é " << func11_media << endl << endl;
-
-
+            cout << endl << endl << "Média: " << func11_media << endl << endl;
             break;
+        case 12:
+        {
+            string func12_str;
+            cout << endl << "Digite uma frase: " << endl;
+            limpaBuffer();
+            getline(cin, func12_str);
+            //funcao12(func12_str);
+        }
+            break;
+
+
+
 
 
     default:
