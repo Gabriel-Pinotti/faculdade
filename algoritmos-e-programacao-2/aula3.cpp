@@ -137,14 +137,15 @@ void funcao13(string str, int &vog, int &cons){
     };
 };
 
-char funcao14(string str){
+void funcao14(string str, char &ch_maisfreq, int &freq){
     char func14_max_temp = count(str.begin(), str.end(), str[0]);
     for (int i = 0; i < str.length(); ++i){
         if (count(str.begin(), str.end(), str[i]) > count(str.begin(), str.end(), func14_max_temp)){
             func14_max_temp = str[i];
         };
-    }
-    return func14_max_temp;
+    };
+    ch_maisfreq = func14_max_temp;
+    freq = count(str.begin(), str.end(), ch_maisfreq);
 };
 
 int main() {
@@ -309,11 +310,13 @@ int main() {
         case 14:
         {
             string func14_str;
-            char func14_resultado;
+            char func14_caractere_mais_frequente;
+            int func14_frequencia;
             cout << endl << "Digite uma frase: ";
             getline(cin, func14_str);
-            func14_resultado = funcao14(func14_str);
-            cout << endl << "Caractere mais frequente: " << func14_resultado << endl;
+            funcao14(func14_str, func14_caractere_mais_frequente, func14_frequencia);
+            cout << endl << "Caractere mais frequente: " << func14_caractere_mais_frequente << endl;
+            cout << "Quantas vezes apareceu: " << func14_frequencia << endl;
         }            
             break;
 
