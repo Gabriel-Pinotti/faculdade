@@ -172,8 +172,8 @@ int main() {
     cout << "15) Remover duplicatas" << endl << "16) Estatisticas de vetor" << endl << "17) Busca linear modular" << endl;
     cout << "18) Verificar palindromo" << endl << "19) Mini calculadora" << endl << "20) Senha forte" << endl << endl;
     cout << "Resposta:  ";
-    // cin >> selecaoDeFuncao;
-    selecaoDeFuncao = 15; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
+    cin >> selecaoDeFuncao;
+    // selecaoDeFuncao = 15; //VALOR PREDEFINIDO PARA MANUTENÇÃO DO CÓDIGO, EXCLUIR ESSA LINHA E DESCOMENTAR ANTERIOR DEPOIS
 
     switch (selecaoDeFuncao){
         case 1:
@@ -343,7 +343,7 @@ int main() {
             break;
 
     default:
-        cout << "Função em manutenção ou inexistente, tente novamente mais tarde";
+        cout << "\n\n======================\nERRO 404\n\nFunção em manutenção ou inexistente, tente novamente mais tarde\n======================\n\n";
         return 0;
     };
     return 0;
