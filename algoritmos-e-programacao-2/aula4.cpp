@@ -2,6 +2,8 @@
 #include <cstring>
 using namespace std;
 
+// TODO mover essas variáveis para perto da função que as utilizam
+
 // para registrarVenda() e mediaMovel()
 double historicoDeVendas[100] = {};
 int contadorDeVendas = 0;
@@ -76,15 +78,23 @@ bool autenticar(const string usuario, const string senhaDigitada, int tentativas
     }
 };
 
+long long fatorial(int n, bool resetContador = false){
+    static long long numeroAtual = 0;
+    if (resetContador){
+        numeroAtual = 0;
+    }
+    numeroAtual += n;
+    return numeroAtual;
+}
 
 int main(){
+    // TODO mover variáveis para perto de onde são utilizadas
     double valortotallocal;
     double mediatemp;
 
+    // TODO criar interface seleção de função
 
-    // --------- LOGS ABAIXO COM PROPÓSITO DE TESTE
-
-    valortotallocal = registrarVenda(10);
+    valortotallocal = registrarVenda(10); // TODO remover logs de teste
     cout << endl << "\n---------\nTotal: " << valortotallocal << endl;
     mediatemp = mediaMovel(100);
     cout << endl << "Média: " << mediatemp << endl;
@@ -105,20 +115,85 @@ int main(){
     cout << endl << "Média: " << mediatemp << endl;
 
 
-    imprimirTitulo("Testando");
+
+
+    imprimirTitulo("Testando"); // TODO remover logs de teste
     imprimirTitulo("Teste", 15);
     imprimirTitulo("Teste Final", 20, '-');
 
     autenticar("gabriel", "senha");
+    autenticar("gabriel", "minhaSenha123");
     autenticar("gabriel", "teste");
-    autenticar("gabriel", "minhaSenha123");
-    autenticar("gabriel", "senha teste");
     autenticar("gabriel", "senha teste");
     autenticar("gabriel", "senha teste");
     autenticar("gabriel", "minhaSenha123");
-    autenticar("gabriel", "senha teste");
-    
 
+
+    // EXERCÍCIO 5
+    int selecaoCalc;
+    cout << "Selecione uma operação\n  1- Soma\n  2- Subtração\n  3- Divisão\n  4- Multiplicação\n   Resposta: ";
+    cin >> selecaoCalc;
+
+    switch (selecaoCalc){
+        case 1:
+        {
+            int num1;
+            int num2;
+            cout << "\nNúmero 1: ";
+            cin >> num1;
+            cout << "\nNúmero 2: ";
+            cin >> num2;
+            cout << "\nSoma: " << num1+num2 << endl;
+        }
+            break;
+        case 2:
+        {
+            int num1;
+            int num2;
+            cout << "\nNúmero 1: ";
+            cin >> num1;
+            cout << "\nNúmero 2: ";
+            cin >> num2;
+            cout << "\nSubtração: " << num1-num2 << endl;
+        }
+            break;
+        case 3:
+        {
+            int num1;
+            int num2;
+            cout << "\nNúmero 1: ";
+            cin >> num1;
+            cout << "\nNúmero 2: ";
+            cin >> num2;
+            cout << "\nDivisão: " << num1/num2 << endl;
+        }
+            break;            
+        case 4:
+        {
+            int num1;
+            int num2;
+            cout << "\nNúmero 1: ";
+            cin >> num1;
+            cout << "\nNúmero 2: ";
+            cin >> num2;
+            cout << "\nMultiplicação: " << num1*num2 << endl;
+        }
+            break;  
+        default:
+            cout << "Inválido\n\n";
+            return 0;
+    }
+
+    cout << "\n\n\n\n"; // TODO remover logs de teste
+    cout << endl << fatorial(0);
+    cout << endl << fatorial(5);
+    cout << endl << fatorial(10);
+    cout << endl << fatorial(20, true);
+    cout << endl << fatorial(90, true);
+    cout << endl << fatorial(10);
+    cout << endl;
+
+    
 
     return 0;
 }
