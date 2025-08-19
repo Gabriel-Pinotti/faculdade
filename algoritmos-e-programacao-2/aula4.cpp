@@ -30,6 +30,25 @@ double mediaMovel(int janela = 3){
     return tempsoma/janela;
 }
 
+void imprimirTitulo(string texto, int largura = 30, char moldura = '='){
+    if(texto.length() > largura){
+        cout << endl << texto << endl;
+        return;
+    }
+
+    int caracteresDeMoldura = (largura - texto.length()) / 2;
+
+    cout << endl;
+    for (int i = 0; i < caracteresDeMoldura; ++i){
+        cout << moldura;
+    }
+    cout << texto;
+    for (int i = 0; i < caracteresDeMoldura; ++i){
+        cout << moldura;
+    }    
+    cout << endl << endl;
+};
+
 
 int main(){
     double valortotallocal;
@@ -57,6 +76,12 @@ int main(){
     cout << endl << "\n---------\nTotal: " << valortotallocal << endl;
     mediatemp = mediaMovel(100);
     cout << endl << "Média: " << mediatemp << endl;
+
+
+    imprimirTitulo("Testando");
+    imprimirTitulo("Teste", 15);
+    imprimirTitulo("Teste Final", 20, '-');
+
 
     return 0;
 }
