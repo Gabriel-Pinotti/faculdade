@@ -2,8 +2,12 @@
 #include <cstring>
 using namespace std;
 
+// para registrarVenda() e mediaMovel()
 double historicoDeVendas[100] = {};
 int contadorDeVendas = 0;
+
+// para autenticar()
+string senhaRegistrada = "minhaSenha123";
 
 double registrarVenda(double valor, bool reset=false){
     static double valorVendas = 0;
@@ -49,6 +53,29 @@ void imprimirTitulo(string texto, int largura = 30, char moldura = '='){
     cout << endl << endl;
 };
 
+bool autenticar(const string usuario, const string senhaDigitada, int tentativasMax = 3){
+    static int tentativasAtuais = 0;
+    if (tentativasMax <= tentativasAtuais){
+        cout << endl << "Tentativas máximas atingidas" << endl;
+        return false;
+    };
+
+    if (senhaDigitada == senhaRegistrada){
+        tentativasAtuais = 0;
+        cout << endl << "=-=-=-=-=-=\nUSUÁRIO AUTENTICADO: " << usuario << endl;
+        return true;
+    } else {
+        ++tentativasAtuais;
+        cout << endl << "=-=-=-=-=-=\nSENHA INCORRETA" << endl;
+        if (tentativasMax-tentativasAtuais == 0){
+            cout << "LIMITE DE TENTATIVAS ATINGIDO!" << endl;
+            return false;
+        }
+        cout << "TENTATIVAS RESTANTES: " << tentativasMax-tentativasAtuais << endl;
+        return false;
+    }
+};
+
 
 int main(){
     double valortotallocal;
@@ -81,6 +108,16 @@ int main(){
     imprimirTitulo("Testando");
     imprimirTitulo("Teste", 15);
     imprimirTitulo("Teste Final", 20, '-');
+
+    autenticar("gabriel", "senha");
+    autenticar("gabriel", "teste");
+    autenticar("gabriel", "minhaSenha123");
+    autenticar("gabriel", "senha teste");
+    autenticar("gabriel", "senha teste");
+    autenticar("gabriel", "senha teste");
+    autenticar("gabriel", "minhaSenha123");
+    autenticar("gabriel", "senha teste");
+    
 
 
     return 0;
