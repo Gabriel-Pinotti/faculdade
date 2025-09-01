@@ -26,29 +26,37 @@ struct Calculadora{
 
     T somar(T a, T b){
         return a + b;
-    }
+    };
 
     T multiplicar(T a, T b){
         return a * b;
-    }
+    };
+
+    T dividir(T a, T b){
+        return a / b;
+    };
+
+    T subtrair(T a, T b){
+        return a - b;
+    };
 
 };
 
 
 
-int main(){
+int main(){    
+    Calculadora<double> calcD;
+    cout << "\n\nUtilizando calcD, 2 + 4 = " << calcD.somar(2, 4);
+    cout << "\n\nUtilizando calcD, 2.4 + 6.4 = " << calcD.somar(2.4, 6.4);
 
-    cout << "\n\ntestando\n\n" << "2 e 4 sempre\n";
+    cout << "\n\nUtilizando calcD, 2 - 4 = " << calcD.subtrair(2, 4);
+    cout << "\n\nUtilizando calcD, 2.4 - 6.4 = " << calcD.subtrair(2.4, 6.4);
 
-    cout << "\n\nSomar 2 e 4 = " << somar_t(2, 4);
-    cout << "\n\nSomar 3.4 e 4.19 = " << somar_t(3.4, 4.19);
-    cout << "\n\nVerificar maior 3.3 e 5.6 = " << verificar_maior(3.3, 5.6);
-    cout << "\n\nVerificar maior 9 e 4 = " << verificar_maior(9, 4);
-    
-    
-    Calculadora<double> calculadora_double;
-    cout << "\n\nUtilizando calcD, 2 + 4 = " << calculadora_double.somar(2, 4);
-    
+    cout << "\n\nUtilizando calcD, 2 * 4 = " << calcD.multiplicar(2, 4);
+    cout << "\n\nUtilizando calcD, 2.4 * 6.4 = " << calcD.multiplicar(2.4, 6.4);
+
+    cout << "\n\nUtilizando calcD, 2 / 4 = " << calcD.dividir(2, 4);
+    cout << "\n\nUtilizando calcD, 2.4 / 6.4 = " << calcD.dividir(2.4, 6.4);
     
     cout << "\n\n\n";
     return 0;
