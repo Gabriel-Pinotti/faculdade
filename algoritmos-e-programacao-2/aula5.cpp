@@ -3,30 +3,32 @@
 #include <iostream>
 using namespace std;
 
-double somar(double num1, double num2){
-return num1+num2;
+
+template <typename T> // soma relativo ao tipo de dados, podendo ser um "double somar()" ou "int somar()" por exemplo.
+T somar_t(T a, T b){
+    return a+b;
 }
 
-double subtrair(double num1, double num2){
-return num1-num2;
-}
 
-double multiplicar(double num1, double num2){
-    return num1*num2;
-}
+template <typename T>
+T verificar_maior(T a, T b){
+    if (a > b){
+        return a;
+    } else {
+        return b;
+    };
+};
 
-double dividir(double num1, double num2){
-    return num1/num2;
-}
+
 
 int main(){
 
     cout << "\n\ntestando\n\n" << "2 e 4 sempre\n";
 
-    cout << "\n\nSomar= " << somar(2, 4);
-    cout << "\n\nSubtrair= " << subtrair(2, 4);
-    cout << "\n\nMultiplicar= " << multiplicar(2, 4);
-    cout << "\n\nDividir= " << dividir(2, 4);
+    cout << "\n\nSomar 2 e 4 = " << somar_t(2, 4);
+    cout << "\n\nSomar 3.4 e 4.19 = " << somar_t(3.4, 4.19);
+    cout << "\n\nVerificar maior 3.3 e 5.6 = " << verificar_maior(3.3, 5.6);
+    cout << "\n\nVerificar maior 9 e 4 = " << verificar_maior(9, 4);
     cout << "\n\n\n";
 
 
