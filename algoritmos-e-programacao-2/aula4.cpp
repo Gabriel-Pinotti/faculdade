@@ -2,7 +2,6 @@
 #include <cstring>
 using namespace std;
 
-// TODO mover essas variáveis para perto da função que as utilizam
 
 // para registrarVenda() e mediaMovel()
 double historicoDeVendas[100] = {};
@@ -88,13 +87,11 @@ long long fatorial(int n, bool resetContador = false){
 }
 
 int main(){
-    // TODO mover variáveis para perto de onde são utilizadas
     double valortotallocal;
     double mediatemp;
 
-    // TODO criar interface seleção de função
 
-    valortotallocal = registrarVenda(10); // TODO remover logs de teste
+    valortotallocal = registrarVenda(10);
     cout << endl << "\n---------\nTotal: " << valortotallocal << endl;
     mediatemp = mediaMovel(100);
     cout << endl << "Média: " << mediatemp << endl;
@@ -117,7 +114,7 @@ int main(){
 
 
 
-    imprimirTitulo("Testando"); // TODO remover logs de teste
+    imprimirTitulo("Testando");
     imprimirTitulo("Teste", 15);
     imprimirTitulo("Teste Final", 20, '-');
 
@@ -184,7 +181,7 @@ int main(){
             return 0;
     }
 
-    cout << "\n\n\n\n"; // TODO remover logs de teste
+    cout << "\n\n\n\n";
     cout << endl << fatorial(0);
     cout << endl << fatorial(5);
     cout << endl << fatorial(10);
