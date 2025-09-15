@@ -11,16 +11,27 @@ int pontos = 0;
 int dificuldade = 0;
 
 vector<string> mapa = { // mapa com vetor pq sim <3 facilitando a vida
-     "####################",
-     "##   ####          #",
-     "#  #      ######   #",
-     "#        ###     ###",
-     "#####   #     ######",
-     "###        ###     #",
-     "#####              #",
-     "###      #######   #",
-     "####################",
-  } ;   
+    "####################",
+    "#        ###     ###",
+    "##   ####          #",
+    "#  #      ######   #",
+    "#        ###     ###",
+    "#        ###     ###",
+    "##   ####          #",
+    "##   ####          #",
+    "#####   #     ######",
+    "#        ###     ###",
+    "###        ###     #",
+    "#####   #     ######",
+    "#####   #     ######",
+    "#####   #     ######",
+    "###        ###     #",
+    "###      #######   #",
+    "#####              #",
+    "###      #######   #",
+    "###      #######   #",
+    "####################",
+} ;   
 
 int selecionarDificuldade(){
     int tempSelecionarDif;
@@ -35,7 +46,7 @@ int selecionarDificuldade(){
 
 
 bool espacoLivre (int l, int c) { 
-    return mapa [l][c] != '#'; // impede que o jogadro saia das paredes
+    return mapa[l][c] != '#'; // impede que o jogadro saia das paredes
 }
      
 struct posicao {int l, c;};
@@ -45,7 +56,7 @@ vector <posicao> pilulas;
 void pospilulas() {
     pilulas.clear();
     vector<posicao> todos = {
-        {1,2}, {6,15}, {1,10}, {2,18}, {7,16}, {7, 17}, {5,5}, {4, 12}, {7, 4}, {7, 7}
+        {1,2}, {6,15}, {1,14}, {2,18}, {7,16}, {7, 17}, {5,5}, {4, 12}, {7, 4}, {7, 7}
     };
     int quantidade = 0;
     if (dificuldade == 1) quantidade = 10;
@@ -60,7 +71,7 @@ vector <posicao> fantasma;
 void posfantasma() {
     fantasma.clear();
     vector<posicao> todos = {
-        {2,7}, {6,10}, {1,12}, {2,17}, {7,18}, {6,5}
+        {2,7}, {6,10}, {1,15}, {2,17}, {7,18}, {6,5}
     };
     int quantidade = 0;
     if (dificuldade == 1) quantidade = 3;
