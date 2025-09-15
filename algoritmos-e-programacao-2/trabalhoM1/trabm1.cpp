@@ -21,30 +21,13 @@ vector<string> mapa = { // mapa com vetor pq sim <3 facilitando a vida
      "###      #######   #",
      "####################",
   } ;   
-     
-struct posicao {int l, c;};
-posicao jogador = {2,1}; // guardar dados do jogador
-     
-     
+  
 bool espacoLivre (int l, int c) { 
     return mapa [l][c] != '#'; // impede que o jogadro saia das paredes
 }
-
-
-
-void movjog (char cmd) { 
-    posicao prox = jogador; //pega a posicao inicial do jogador
-    if (cmd == 'w') prox.l--; //cima vrau, pega a linha e coluna e substrai ou soma a posicao
-    if (cmd == 's') prox.l++; //baixo
-    if (cmd == 'a') prox.c--; //esquerda
-    if (cmd == 'd') prox.c++; //direta
-    
-    if (espacoLivre(prox.l, prox.c)) {
-        jogador = prox; // pro jogador nao sair do lugar se for espacoLivre
-       
-
-    }
-}
+     
+struct posicao {int l, c;};
+posicao jogador = {2,1}; // guardar dados do jogador  
 
 vector <posicao> pilulas;
 void pospilulas() {
@@ -52,14 +35,44 @@ void pospilulas() {
     pilulas.push_back({1, 4});
 };
 
-
- 
 vector <posicao> fantasma;
 void posfantasma () { // TODO criar um desse para cada nível de dificuldade
     fantasma.clear(); // limpando o vetor
     fantasma.push_back ({2,7});//push_back adiciona algo no vetor e as coordenadas dizem onde
     fantasma.push_back ({6,10});
     
+}
+
+struct structbomba {int l, c; int contador;};
+vector <structbomba> bombas;
+void posicBomba(){
+    if (qtdBombas == 0) return;
+    bombas.push_back({jogador.l, jogador.c, 5});
+    qtdBombas--;
+}
+
+bool temBomba (int l, int c) {
+    for(auto& b : bombas){
+        if (b.l == l && b.c == c){return true;};
+    }
+    return false;
+};
+
+void movjog (char cmd) { 
+    posicao prox = jogador; //pega a posicao inicial do jogador
+    if (cmd == 'w') prox.l--; //cima vrau, pega a linha e coluna e substrai ou soma a posicao
+    if (cmd == 's') prox.l++; //baixo
+    if (cmd == 'a') prox.c--; //esquerda
+    if (cmd == 'd') prox.c++; //direta
+    if (cmd == 'b') {
+        posicBomba();
+    };
+    
+    if (espacoLivre(prox.l, prox.c) && temBomba(prox.l, prox.c) == false) {
+        jogador = prox; // pro jogador nao sair do lugar se for espacoLivre
+       
+
+    }
 }
 
 void movfantasma () {
@@ -71,11 +84,12 @@ void movfantasma () {
         if (dir == 2) prox.c--; // esquerda
         if (dir == 3) prox.c++; // direita
 
-        if (espacoLivre(prox.l, prox.c)) {
+        if (espacoLivre(prox.l, prox.c) && temBomba(prox.l, prox.c) == false) {
             f = prox; // mover fantasma
         }       
     }
 }
+
 void desenhar() {
     system("clear"); 
     cout << "\nBombas disponiveis: " << qtdBombas << "\n\n";
@@ -87,6 +101,9 @@ void desenhar() {
     for (auto &p : pilulas){
         img[p.l][p.c] = '%';
     }
+    for (auto &b : bombas){
+        img[b.l][b.c] = 'b';
+    }
     img[jogador.l][jogador.c] = 'P'; // desenhando jogador
     
 
@@ -94,7 +111,8 @@ void desenhar() {
 }
 
 
- int main (){ 
+
+int main (){ 
   posfantasma();
   pospilulas();
   srand (time(0));
@@ -102,7 +120,8 @@ void desenhar() {
       while (true) {  
         
         desenhar();
-        cout << "\n---Use WASD para mover o jogador e Q para sair\n**Legenda**\n-#: Parede\n-G: Fantasma\n-P: Jogador\n-%: Pilula\n-b: Bomba";
+        cout << "\n---Use WASD para mover o jogador, B para posicionar uma bomba e Q para sair\n**Legenda**\n-#: Parede";
+        cout << "\n-G: Fantasma\n-P: Jogador\n-%: Pilula\n-b: Bomba";
         cout << "\n\n  Input: " ;
         char cmd;
         cin >> cmd;
@@ -112,8 +131,16 @@ void desenhar() {
         }
 
         movjog(cmd);
-        movfantasma(); 
+        movfantasma();
 
+
+        for (int i = 0; i < bombas.size(); i++) {
+            bombas[i].contador--;       //diminui o contador
+            if (bombas[i].contador <= 0) {
+                bombas.erase(bombas.begin() + i); // explode e some do mapa
+                i--;
+            }
+        }
         
         for (auto& f : fantasma) { //colisao dos fantasmas
             if (f.l == jogador.l && f.c == jogador.c) {
