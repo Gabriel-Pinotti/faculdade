@@ -76,23 +76,29 @@ struct structbomba {int l, c; int contador;};
 vector <structbomba> bombas;
 void posicBomba(){
     if (qtdBombas == 0) return;
-    bombas.push_back({jogador.l, jogador.c, 1});
+    bombas.push_back({jogador.l, jogador.c, 4});
     qtdBombas--;
 }
 
-bool temBomba (int l, int c) {
-    for(auto& b : bombas){
-        if (b.l == l && b.c == c){return true;};
+template <typename T>
+bool temElemento(const vector<T>& v, int l, int c){
+    for (auto &e : v) {
+        if (e.l == l && e.c == c) return true;
     }
     return false;
+}
+
+bool temBomba (int l, int c) {
+    return temElemento(bombas, l, c); 
 };
 
 bool temPilula (int l, int c) {
-    for(auto& p : pilulas){
-        if (p.l == l && p.c == c){return true;};
-    }
-    return false;
+    return temElemento(pilulas, l, c); 
 };
+
+bool temFantasma (int l, int c){
+    return temElemento(fantasma, l, c);
+}
 
 void movjog (char cmd = '-') { 
     posicao prox = jogador; //pega a posicao inicial do jogador
@@ -119,7 +125,7 @@ void movfantasma () {
         if (dir == 2) prox.c--; // esquerda
         if (dir == 3) prox.c++; // direita
 
-        if (espacoLivre(prox.l, prox.c) && temBomba(prox.l, prox.c) == false && temPilula(prox.l, prox.c) == false) {
+        if (espacoLivre(prox.l, prox.c) && !temBomba(prox.l, prox.c) && !temPilula(prox.l, prox.c) && !temFantasma(prox.l, prox.c)) {
             f = prox; // mover fantasma
         }       
     }
@@ -166,7 +172,7 @@ int main (){
         cout << "\n-G: Fantasma\n-P: Jogador\n-%: Pilula\n-b: Bomba";
         cout << "\n\n  Input: " ;
         string linha;
-        getline(cin, linha); // lê a linha inteira, até Enter
+        getline(cin, linha);
         char cmd = (linha.empty() ? '\0' : linha[0]); // se estiver vazia, default = '\0'
 
         if (cmd == 'q') {
