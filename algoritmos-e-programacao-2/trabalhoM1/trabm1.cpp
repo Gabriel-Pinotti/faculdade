@@ -94,20 +94,19 @@ bool temPilula (int l, int c) {
     return false;
 };
 
-void movjog (char cmd) { 
+void movjog (char cmd = '-') { 
     posicao prox = jogador; //pega a posicao inicial do jogador
     if (cmd == 'w') prox.l--; //cima vrau, pega a linha e coluna e substrai ou soma a posicao
     if (cmd == 's') prox.l++; //baixo
     if (cmd == 'a') prox.c--; //esquerda
     if (cmd == 'd') prox.c++; //direta
+    if (cmd == '-') prox = jogador;
     if (cmd == 'b') {
         posicBomba();
     };
     
     if (espacoLivre(prox.l, prox.c) && temBomba(prox.l, prox.c) == false) {
         jogador = prox; // pro jogador nao sair do lugar se for espacoLivre
-       
-
     }
 }
 
@@ -166,8 +165,9 @@ int main (){
         cout << "\n---Use WASD para mover o jogador, B para posicionar uma bomba e Q para sair\n**Legenda**\n-#: Parede";
         cout << "\n-G: Fantasma\n-P: Jogador\n-%: Pilula\n-b: Bomba";
         cout << "\n\n  Input: " ;
-        char cmd;
-        cin >> cmd;
+        string linha;
+        getline(cin, linha); // lê a linha inteira, até Enter
+        char cmd = (linha.empty() ? '\0' : linha[0]); // se estiver vazia, default = '\0'
 
         if (cmd == 'q') {
             break;
