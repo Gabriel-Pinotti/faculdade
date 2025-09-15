@@ -47,7 +47,7 @@ struct structbomba {int l, c; int contador;};
 vector <structbomba> bombas;
 void posicBomba(){
     if (qtdBombas == 0) return;
-    bombas.push_back({jogador.l, jogador.c, 5});
+    bombas.push_back({jogador.l, jogador.c, 1});
     qtdBombas--;
 }
 
@@ -110,6 +110,11 @@ void desenhar() {
     for (auto &line : img) cout << line << "\n";
 }
 
+void telaDeVitoria(){
+    system("clear");
+    cout << "Voce venceu!!\n\n";
+    return;
+}
 
 
 int main (){ 
@@ -137,8 +142,21 @@ int main (){
         for (int i = 0; i < bombas.size(); i++) {
             bombas[i].contador--;       //diminui o contador
             if (bombas[i].contador <= 0) {
+                for (int j = 0; j < fantasma.size(); j++) {
+                    int dl = abs(fantasma[j].l - bombas[i].l);
+                    int dc = abs(fantasma[j].c - bombas[i].c);
+                    if (dl <= 1 && dc <= 1) { // diferença de ate 1 em linha e coluna
+                        fantasma.erase(fantasma.begin() + j); // mata o fantasma
+                        j--;
+                    }
+                }
                 bombas.erase(bombas.begin() + i); // explode e some do mapa
                 i--;
+                
+                if (fantasma.empty()){
+                    telaDeVitoria();
+                    return 0;
+                }
             }
         }
         
@@ -146,7 +164,7 @@ int main (){
             if (f.l == jogador.l && f.c == jogador.c) {
                 system("clear");
                 cout << "Voce foi pego por um fantasma! Game Over.\n\n";
-                // cout << "Pontos: " << pontos << "\n";
+                // TODO cout << "Pontos: " << pontos << "\n";
                 return 0; 
             }
         }
@@ -159,13 +177,6 @@ int main (){
             }
         }
 
-
-        // if (fantasmasRestantes == 0) { 
-        //     system("clear");
-        //     cout << "Parabens!\n";
-        //     cout << "Pontuacao final: " << pontos << "\n";
-        //     return 0; // Termina o jogo
-        // }
     }
 
 
