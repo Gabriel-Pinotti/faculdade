@@ -7,22 +7,22 @@ using namespace std;
     
 
 vector<string> mapa = { // mapa com vetor pq sim <3 facilitando a vida
-     "#####################",
-     "##   ####           #",
-     "#  #      ######    #",
-     "#        ###     ## #",
-     "####..#..#.....######",
-     "###........###......#",
-     "#####..........###..#",
-     "###......######.....#",
-     "#####################",
+     "####################",
+     "##   ####          #",
+     "#  #      ######   #",
+     "#        ###     ###",
+     "#####   #     ######",
+     "###        ###     #",
+     "#####              #",
+     "###      #######   #",
+     "####################",
   } ;   
      
 struct posicao {int l, c;};
 posicao jogador = {2,1}; // guardar dados do jogador
      
      
- bool parede (int l, int c) { 
+ bool espacoLivre (int l, int c) { 
      return mapa [l][c] != '#'; // impede que o jogadro saia das paredes
  }
 
@@ -35,8 +35,8 @@ void movjog (char cmd) {
     if (cmd == 'a') prox.c--; //esquerda
     if (cmd == 'd') prox.c++; //direta
     
-    if (parede(prox.l, prox.c)) {
-        jogador = prox; // pro jogador nao sair do lugar se for parede
+    if (espacoLivre(prox.l, prox.c)) {
+        jogador = prox; // pro jogador nao sair do lugar se for espacoLivre
        
 
     }
@@ -59,7 +59,7 @@ void movfantasma () {
         if (dir == 2) prox.c--; // esquerda
         if (dir == 3) prox.c++; // direita
 
-        if (parede(prox.l, prox.c) && mapa[prox.l][prox.c] != '.') {
+        if (espacoLivre(prox.l, prox.c)) {
             f = prox; // mover fantasma
         }       
     }
