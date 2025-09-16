@@ -1,10 +1,12 @@
+// AUTORES: ESTELA BELAZIO MESSIAS, GABRIEL DE AQUINO PINOTTI
+
 #include <iostream>
 #include <vector>
 #include <string> 
 #include <cstdlib> 
 #include <ctime> 
 using namespace std;
-    
+
 // variaveis globais
 int qtdBombas = 3;
 int pontos = 0;
@@ -19,12 +21,12 @@ vector<string> mapa = { // mapa com vetor pq sim <3 facilitando a vida
     "#        ###     ###",
     "##   ####          #",
     "##   ####          #",
-    "#####   #     ######",
-    "#        ###     ###",
+    "##            ######",
+    "#          #     ###",
     "###        ###     #",
     "#####   #     ######",
     "#####   #     ######",
-    "#####   #     ######",
+    "#####         ######",
     "###        ###     #",
     "###      #######   #",
     "#####              #",
@@ -50,13 +52,13 @@ bool espacoLivre (int l, int c) {
 }
      
 struct posicao {int l, c;};
-posicao jogador = {2,1};
+posicao jogador = {2,2};
 
 vector <posicao> pilulas;
 void pospilulas() {
     pilulas.clear();
     vector<posicao> todos = {
-        {1,2}, {6,15}, {1,14}, {2,18}, {7,16}, {7, 17}, {5,5}, {4, 12}, {7, 4}, {7, 7}
+        {1,2}, {6,15}, {1,14}, {2,18}, {7,16}, {7, 17}, {5,5}, {4, 12}, {7, 4}, {9, 7}
     };
     int quantidade = 0;
     if (dificuldade == 1) quantidade = 10;
@@ -71,7 +73,7 @@ vector <posicao> fantasma;
 void posfantasma() {
     fantasma.clear();
     vector<posicao> todos = {
-        {2,7}, {6,10}, {1,15}, {2,17}, {7,18}, {6,5}
+        {3,7}, {6,10}, {1,15}, {2,17}, {7,18}, {6,5}
     };
     int quantidade = 0;
     if (dificuldade == 1) quantidade = 3;
@@ -87,7 +89,7 @@ struct structbomba {int l, c; int contador;};
 vector <structbomba> bombas;
 void posicBomba(){
     if (qtdBombas == 0) return;
-    bombas.push_back({jogador.l, jogador.c, 4});
+    bombas.push_back({jogador.l, jogador.c, 5});
     qtdBombas--;
 }
 
@@ -122,7 +124,7 @@ void movjog (char cmd = '-') {
         posicBomba();
     };
     
-    if (espacoLivre(prox.l, prox.c) && temBomba(prox.l, prox.c) == false) {
+    if (espacoLivre(prox.l, prox.c) && !temBomba(prox.l, prox.c)) {
         jogador = prox; // pro jogador nao sair do lugar se for espacoLivre
     }
 }
@@ -155,7 +157,7 @@ void desenhar() {
         img[p.l][p.c] = '%';
     }
     for (auto &b : bombas){ // bombas
-        img[b.l][b.c] = 'b';
+        img[b.l][b.c] = 'B';
     }
     img[jogador.l][jogador.c] = 'P'; // jogador
     
@@ -165,7 +167,7 @@ void desenhar() {
 
 void telaDeVitoria(){
     system("clear");
-    cout << "Voce venceu!!\nPontuacao: " << pontos << "\n\n"; // TODO bonus de tempo (jogadas restantes)
+    cout << "Voce venceu!!\nPontuacao: " << pontos << "\n\n";
     return;
 }
 
@@ -216,7 +218,7 @@ int main (){
             }
         }
         
-        for (auto& f : fantasma) { //colisao dos fantasmas
+        for (auto& f : fantasma) { //colisao com fantasma
             if (f.l == jogador.l && f.c == jogador.c) {
                 system("clear");
                 cout << "Voce foi pego por um fantasma! Game Over.\n";
