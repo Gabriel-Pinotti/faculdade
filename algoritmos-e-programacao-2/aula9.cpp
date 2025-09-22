@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-void dobrarValor(int &n){
-    n*=2;
+void dobrarValor(int *n){
+    *n *=2;
     return;
 }
 
@@ -54,10 +54,10 @@ int main(){
     cout << "A (val): " << *pDa << endl;
     cout << "B (val): " << *pDb << endl;
 
-    
+
     // parte 4: função que dobre o valor de uma variável por ponteiro
-    dobrarValor(*pDa);
-    dobrarValor(*pDb);
+    dobrarValor(pDa);
+    dobrarValor(pDb);
     cout << "\n[A e B dobrados]" << endl;
     cout << "A (val): " << *pDa << endl;
     cout << "B (val): " << *pDb << endl;
