@@ -9,6 +9,9 @@ struct nomestruct {
     void calcular(){
         cout << "\ni * j = " << i*j;
     }
+    void subtrair_j_de_i(){
+        i = i-j;
+    }
 };
 
 
@@ -22,11 +25,15 @@ T somar(T a, T b){
 int main(){
     nomestruct<int> varDeStruct;
 
-    varDeStruct.i = 2;
-    varDeStruct.j = 7;
+    varDeStruct.i = 7;
+    varDeStruct.j = 2;
     cout << "\ni = " << varDeStruct.i;
     cout << "\nj = " << varDeStruct.j;
     varDeStruct.calcular();
+    cout << "\nSubtraindo J de I";
+    varDeStruct.subtrair_j_de_i();
+    cout << "\ni = " << varDeStruct.i;
+    cout << "\nj = " << varDeStruct.j;
 
     cout << "\n\n";
 
