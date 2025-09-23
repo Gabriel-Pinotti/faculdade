@@ -23,7 +23,8 @@ int main(){
     // parte 1
     int a = 2;
     int b = 7;
-    int *pda = &a;
+    int *pda;
+    pda = &a;
     int *pdb = &b;
 
     // parte 2
