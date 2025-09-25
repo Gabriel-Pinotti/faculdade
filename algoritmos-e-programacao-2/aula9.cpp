@@ -15,6 +15,7 @@ int main(){
     // int *p = &a;
     // a = 15;
     // cout << *p << endl; (a saída é 15)
+    // cout << p << endl; (a saída é o endereço de memória da variável a)
 
     // int numeros[5] = {1, 2, 3, 4, 5};
     // int *p = numeros;
