@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <typeinfo>
 using namespace std;
 
 
@@ -42,10 +43,10 @@ int main(){
 
 
     // etapa 5.1
-    // for (int i = 0; i < sizeof(listaint)/sizeof(listaint[0]); i++){
-    //     cout << "\ni = " << i << endl;
-    //     cout << listaint[i] << " ";
-    // }
+    for (int i = 0; i < numentradas; i++){
+        // cout << "\ni = " << i << endl; (para debug)
+        cout << listaint[i] << " ";
+    }
 
 
     // etapa 5.2
