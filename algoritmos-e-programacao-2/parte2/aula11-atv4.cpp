@@ -1,10 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include <typeinfo>
 using namespace std;
-
-
-// TODO corrigir bugs de lógica de armazenamento
 
 int main(){
 
@@ -17,7 +13,6 @@ int main(){
 
     // etapa 1
     int *listaint = (int*)malloc(2 * sizeof(int));
-
 
     int capacidade = 2;
     int numentradas = 0;
@@ -35,19 +30,14 @@ int main(){
         // etapa 3
         if (numentradas == capacidade){
             capacidade*=2;
-            // cout << "realloc para " << capacidade << " | numentradas = " << numentradas << endl;; (teste para validação do sistema de verificação)
             listaint = (int*)realloc(listaint, capacidade* sizeof(int));
         }
     }
 
-
-
     // etapa 5.1
     for (int i = 0; i < numentradas; i++){
-        // cout << "\ni = " << i << endl; (para debug)
         cout << listaint[i] << " ";
     }
-
 
     // etapa 5.2
     free(listaint);
