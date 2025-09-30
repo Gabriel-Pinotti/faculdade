@@ -4,8 +4,8 @@
 using namespace std;
 
 struct Time {
-    int id;
     string nome;
+    int id, pontos, partidasJogadas, golsPro, golsContra, saldoGols;
 };
 
 struct Partida {
@@ -54,9 +54,19 @@ string buscarTime(int id){
 }
 
 
+Time& buscaPorId(int id){
+    if (id == Flamengo.id) return Flamengo;
+    if (id == Gremio.id) return Gremio;
+    if (id == Vasco.id) return Vasco;
+
+    throw invalid_argument("Time nao encontrado");
+}
+
+
 // --- Funções de escolha do usuário
 
 void registrarPartida(){
+    // declaração de variáveis
     int idcasa, idvisitante, golscasa, golsvisitante;
     cout << "\nID do time da casa: ";
     cin >> idcasa;
@@ -72,15 +82,39 @@ void registrarPartida(){
     cin >> golscasa;
     cout << "\nGols do time visitante: ";
     cin >> golsvisitante;
+    // registro dinâmico
     if (capacidadeRegistros == quantidadeRegistros){
         capacidadeRegistros*=2;
         historicoPartidas = (Partida*)realloc(historicoPartidas, capacidadeRegistros*sizeof(Partida));
     }
+    // coloca no ponteiro geral
     historicoPartidas[quantidadeRegistros].idCasa = idcasa;
     historicoPartidas[quantidadeRegistros].idVisitante = idvisitante;
     historicoPartidas[quantidadeRegistros].golsCasa = golscasa;
     historicoPartidas[quantidadeRegistros].golsVisitante = golsvisitante;
     quantidadeRegistros+=1;
+
+    // armazena pontos, partidas jogadas, gol pro, gol contra e saldo de gols
+    buscaPorId(idcasa).partidasJogadas+=1;
+    buscaPorId(idvisitante).partidasJogadas+=1;
+    buscaPorId(idcasa).golsPro+=golscasa;
+    buscaPorId(idcasa).golsContra+=golsvisitante;
+    buscaPorId(idcasa).saldoGols-=golsvisitante;
+    buscaPorId(idcasa).saldoGols+=golscasa;
+    buscaPorId(idvisitante).golsPro+=golsvisitante;
+    buscaPorId(idvisitante).golsContra+=golscasa;
+    buscaPorId(idvisitante).saldoGols-=golscasa;
+    buscaPorId(idvisitante).saldoGols+=golsvisitante;
+    if(golscasa > golsvisitante){ // casa ganhou
+        buscaPorId(idcasa).pontos+=3;
+    } else if (golscasa < golsvisitante){ // visitantes ganharam
+        buscaPorId(idvisitante).pontos+=3;
+    } else { // empate
+        buscaPorId(idvisitante).pontos+=1;
+        buscaPorId(idcasa).pontos+=1;
+    }
+
+    // saída
     cout << "\n\nRegistro realizado com sucesso, pressione enter para prosseguir\n";
     string tempenter;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -99,7 +133,15 @@ void listarPartidas(){
     getline(cin, tempenter);
 }
 
+void gerarTabela(){
+    system("clear");
 
+
+
+
+
+
+}
 
 
 
@@ -115,7 +157,7 @@ int main(){
                 listarPartidas();
                 break;
             case 3: // gerar tabela de pontuação
-                //gerarTabela();
+                gerarTabela();
                 break;
             case 4: // liberar memória e sair
                 free(historicoPartidas);
