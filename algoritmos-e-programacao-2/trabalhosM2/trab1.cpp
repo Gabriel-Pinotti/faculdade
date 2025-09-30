@@ -70,14 +70,16 @@ void registrarPartida(){
     int idcasa, idvisitante, golscasa, golsvisitante;
     cout << "\nID do time da casa: ";
     cin >> idcasa;
-    if(idcasa > 3 || idcasa < 1)
-        cout << "\n\nErro de digitação";
+    if(idcasa > 3 || idcasa < 1){
+    cout << "\n\nErro de digitação";
         return;
+    }
     cout << "\nID do time visitante: ";
     cin >> idvisitante;
-        if(idvisitante > 3 || idvisitante < 1)
+    if(idvisitante > 3 || idvisitante < 1){
         cout << "\n\nErro de digitação";
         return;
+    }
     cout << "\nGols do time da casa: ";
     cin >> golscasa;
     cout << "\nGols do time visitante: ";
