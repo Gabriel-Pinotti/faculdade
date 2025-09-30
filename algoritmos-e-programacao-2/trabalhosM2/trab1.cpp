@@ -1,11 +1,17 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <iomanip>
 using namespace std;
 
 struct Time {
     string nome;
-    int id, pontos, partidasJogadas, golsPro, golsContra, saldoGols;
+    int id;
+    int pontos = 0;
+    int partidasJogadas = 0;
+    int golsPro = 0;
+    int golsContra = 0;
+    int saldoGols = 0;
 };
 
 struct Partida {
@@ -137,12 +143,32 @@ void listarPartidas(){
 
 void gerarTabela(){
     system("clear");
+    cout << left  << setw(12) << "TIME"
+         << right << setw(5)  << "PTS"
+         << setw(5)  << "PJ"
+         << setw(5)  << "GP"
+         << setw(5)  << "GC"
+         << setw(5)  << "SG" << endl;
 
+    cout << string(37, '-') << endl;
 
+    auto imprime = [](Time &t){
+        cout << left  << setw(12) << t.nome
+             << right << setw(5)  << t.pontos
+             << setw(5)  << t.partidasJogadas
+             << setw(5)  << t.golsPro
+             << setw(5)  << t.golsContra
+             << setw(5)  << t.saldoGols
+             << endl;
+    };
 
-
-
-
+    imprime(Flamengo);
+    imprime(Gremio);
+    imprime(Vasco);
+    cout << "\n\nPressione enter para prosseguir\n";
+    string tempenter;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, tempenter);
 }
 
 
