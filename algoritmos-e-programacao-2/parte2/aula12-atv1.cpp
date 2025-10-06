@@ -9,7 +9,12 @@ int fibonacci_recursivo(int n){
         return fibonacci_recursivo(n-1) + fibonacci_recursivo(n-2);
 }
 
-
+int fatorial(int n){
+    if(n == 1){
+        return 1;
+    }
+    return n * fatorial(n-1);
+}
 
 
 int main(){
