@@ -18,22 +18,16 @@ int fatorial(int n){
 
 
 int main(){
-    // int fibonacci[50] = {1, 1};
+    // int n = 10;
 
-    // for (int i = 0; i < 15; i++){
-    //     fibonacci[i+2] = fibonacci[i]+fibonacci[i+1];
+    // cout << "Sendo n = " << n << "\n -Sequência de Fibonacci até n\n\n";
+
+    // for (int i = 0; i < n; i++){
+    //     cout << fibonacci_recursivo(i) << "  ";
     // }
 
-    // for (int i = 0; i < 17; i++){
-    //     cout << fibonacci[i] << " | ";
-    // }
-    int n = 10;
 
-    cout << "Sendo n = " << n << "\n -Sequência de Fibonacci até n\n\n";
-
-    for (int i = 0; i < n; i++){
-        cout << fibonacci_recursivo(i) << "  ";
-    }
+    cout << "Fatorial de 5 = " << fatorial(5);
 
 
     cout << "\n\n";
