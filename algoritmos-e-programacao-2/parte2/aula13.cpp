@@ -41,7 +41,10 @@ void imprimir(int *vetor, int tam){
 }
 
 template <typename T>
-T buscabinaria(T *lista, T alvo, int inicio, int fim){
+int buscabinaria(T *lista, T alvo, int inicio, int fim){
+    if (inicio > fim){
+        return -1;
+    }
     int meio;
     if ((fim - inicio) % 2 == 0){
         meio = (fim+inicio)/2;
@@ -62,11 +65,11 @@ T buscabinaria(T *lista, T alvo, int inicio, int fim){
 int main(){
     srand(time(NULL));
 
-    int tam = 8;
+    int tam = 10;
     int *vetor = (int*)malloc(tam*sizeof(int));
 
     for(int i =0; i < tam; i++){
-        vetor[i] = rand() %100;
+        vetor[i] = rand() %20;
     }
 
     cout << "\n------Quick Sort------\n[Vetor antes do quicksort]" << endl;
@@ -75,11 +78,16 @@ int main(){
     cout << "\n[Vetor depois do quicksort]" << endl;
     imprimir(vetor, tam);
 
-    int alvo = vetor[rand() %5];
+    int alvo = (rand()%20);
 
     cout << "\n------Busca Binaria------\nProcurando por: " << alvo << endl;
-    int localizacao = buscabinaria<int>(vetor, alvo, 0, tam-1);
-    cout << "\nEncontrado no índice " << localizacao; 
+    int localizacao = buscabinaria(vetor, alvo, 0, tam-1);
+    if (localizacao != -1){
+        cout << "\nEncontrado no índice " << localizacao;
+    } else {
+        cout << "\nNão encontrado"; 
+    }
+
 
 
     cout << "\n\n";
