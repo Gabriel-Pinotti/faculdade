@@ -40,6 +40,24 @@ void imprimir(int *vetor, int tam){
     cout << endl << endl;
 }
 
+// TODO apropriar em template
+int buscabinaria(int *lista, int alvo, int inicio, int fim){
+    int meio;
+    if ((fim - inicio) % 2 == 0){
+        meio = (fim+inicio)/2;
+    } else {
+        meio = (fim+inicio+1)/2;
+    }
+    if (lista[meio] < alvo){
+        return buscabinaria(lista, alvo, meio+1, fim);
+    }
+    if (lista[meio] > alvo){
+        return buscabinaria(lista, alvo, inicio, meio-1);
+    }
+    return meio;
+
+}
+
 
 int main(){
     srand(time(NULL));
@@ -57,6 +75,11 @@ int main(){
     cout << "\nVetor depois do quicksort: " << endl;
     imprimir(vetor, tam);
 
+    int alvo = vetor[rand() %5];
+
+    cout << "\n---Busca Binaria---\n -procurando por: " << alvo << endl;
+    int localizacao = buscabinaria(vetor, alvo, 0, tam-1);
+    cout << "\nEncontrado no índice " << localizacao; 
 
 
     cout << "\n\n";
