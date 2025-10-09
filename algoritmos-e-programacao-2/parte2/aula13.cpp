@@ -3,8 +3,9 @@
 #include <ctime>
 using namespace std;
 
-void quicksort(int *vetor, int inicio, int fim){
-    int pivo = vetor[inicio];
+template <typename T>
+void quicksort(T *vetor, int inicio, int fim){
+    T pivo = vetor[inicio];
     int esquerda = inicio;
     int direita = fim;
 
@@ -16,7 +17,7 @@ void quicksort(int *vetor, int inicio, int fim){
             direita--;
 
         if (esquerda <= direita){
-            int temp = vetor[esquerda];
+            T temp = vetor[esquerda];
             vetor[esquerda] = vetor[direita];
             vetor[direita] = temp;
 
@@ -52,7 +53,7 @@ int main(){
 
     cout << "\nVetor antes do quicksort: " << endl;
     imprimir(vetor, tam);
-    quicksort(vetor, 0, tam-1);
+    quicksort<int>(vetor, 0, tam-1);
     cout << "\nVetor depois do quicksort: " << endl;
     imprimir(vetor, tam);
 
