@@ -37,12 +37,12 @@ void declararTimes(){
 }
 
 int solicitacaoMenu(){
-    system("clear"); // TODO substituir para windows
+    system("clear");
     int tempResp;
     cout << "\nMENU\n\nSelecione uma opção:\n  1- Registrar partida"
     << "\n  2- Listar partidas\n  3- Gerar Tabela de Pontuação\n  4- Liberar memória e sair\n\nResposta: ";
     cin >> tempResp;
-    system("clear"); // TODO substituir para windows
+    system("clear");
     return tempResp;
 }
 
@@ -130,7 +130,6 @@ void registrarPartida(){
 }
 
 void listarPartidas(){
-    //system("clear"); // TODO substituir para windows
     for(int i = 0; i < quantidadeRegistros; i++){
         cout << "\n[" << buscarTime(historicoPartidas[i].idCasa) << " " << historicoPartidas[i].golsCasa << " X "
         << historicoPartidas[i].golsVisitante << " " << buscarTime(historicoPartidas[i].idVisitante) << "]";
