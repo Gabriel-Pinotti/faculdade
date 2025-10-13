@@ -1,21 +1,6 @@
 #include <iostream>
+#include "aula14header.h"
 using namespace std;
-
-int somar(int numA, int numB){
-    return numA+numB;
-}
-
-int subtrair(int numA, int numB){
-    return numA-numB;
-}
-
-int multiplicar(int numA, int numB){
-    return numA*numB;
-}
-
-int dividir(int numA, int numB){
-    return (double)numA/(double)numB;
-}
 
 int main(){
     int numA = 10;
