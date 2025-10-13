@@ -1,10 +1,9 @@
 #include "aula14header.h"
 // agora, para implementar, utilize:
-// g++ aula14fontecods.cpp -c              // para criar um arquivo aula14fontecods.o
-// g++ aula14saida.cpp aula14fontecods.o   // para criar um a.out utilizando saida.cpp com fonte, header apenas como assinatura
+// g++ aula14saida.cpp aula14fontecods.cpp // para criar um .out utilizando auça14saida.cpp com fonte aula14fontecods.cpp, header apenas de assinatura
 //
 // nesse caso, se tiver vários arquivos de biblioteca pode utilizar:
-// g++ arquivoQueContemFuncaoMain.cpp biblioteca1.o biblioteca2.o biblioteca3.o   // incluindo todas as bibliotecas necessárias
+// g++ arquivoQueContemFuncaoMain.cpp biblioteca1.cpp biblioteca2.cpp biblioteca3.cpp   // incluindo todas as bibliotecas necessárias
 
 
 int somar(int numA, int numB){
