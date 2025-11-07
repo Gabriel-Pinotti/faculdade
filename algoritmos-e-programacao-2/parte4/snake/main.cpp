@@ -7,24 +7,24 @@ using namespace std;
 #define LEFT 2
 #define RIGHT 3
 
-#define SCREEN_WIDTH 800 // Define o tamanho da janela
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 1000 // Define o tamanho da janela
+#define SCREEN_HEIGHT 800
 
-#define SPEED 250 // Define a velocidade do círculo
-#define RADIUS 15 // Define o tamanho do círculo
+#define SPEED 800 // Define a velocidade do círculo
+#define RADIUS 10 // Define o tamanho do círculo
 
 void colisao(Vector2 &pos){
         if (pos.x < RADIUS){ // colidiu na parede da esquerda
-            pos.x = RADIUS;
-        }
-        if (pos.x > SCREEN_WIDTH-RADIUS){ // colidiu na parede da direita
             pos.x = SCREEN_WIDTH-RADIUS;
         }
+        if (pos.x > SCREEN_WIDTH-RADIUS){ // colidiu na parede da direita
+            pos.x = RADIUS;
+        }
         if (pos.y < RADIUS){ // colidiu na parede de cima
-            pos.y = RADIUS;
+            pos.y = SCREEN_HEIGHT-RADIUS;
         }
         if (pos.y > SCREEN_HEIGHT-RADIUS){ // colidiu na parede de baixo
-            pos.y = SCREEN_HEIGHT-RADIUS;
+            pos.y = RADIUS;
         }
 }
 
@@ -91,3 +91,4 @@ int main() {
     CloseWindow();
     return 0;
 }
+
