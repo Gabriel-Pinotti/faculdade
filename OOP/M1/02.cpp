@@ -10,9 +10,9 @@ class Carro {
 
     public:
 
-    Carro(int ano, string cor, string placa){ // construtor não recebe tipo
-        this->ano = ano;
-        this->cor = cor;
+    Carro(int ano, string cor, string placa){ // construtor não é tipado
+        this->ano = ano; // this acessa atributos e métodos da classe
+        this->cor = cor; // this-> cor é o atributo declarado acima, cor (sem o this) é o parâmetro recebido
         this->placa = placa;
     }
 
