@@ -19,9 +19,10 @@ class Retangulo {
             return altura * largura;
         }
 
-        void imprime() {
-            cout << "Altura: " << altura << "\nLargura: " << largura << "\n";
-            cout << "\nÁrea: " << area;
+        void imprime(string varname) {
+            cout << "--" << varname << "--\n\n";
+            cout << "Altura: " << altura << " | Largura: " << largura << "\n";
+            cout << "Área: " << area << "\n\n";
         }
 };
 float Retangulo::area = 45;
@@ -29,8 +30,15 @@ float Retangulo::area = 45;
 int main(){
 
     Retangulo* r1 = new Retangulo(2, 3);
+    Retangulo* r2 = new Retangulo(4, 5);
+
     Retangulo::area = r1->calculaarea();
-    r1->imprime();
+
+    r1->imprime("r1"); // área se torna 6 pra r1 e r2
+
+    Retangulo::area = r2->calculaarea(); // área se torna 20 pra r1 e r2
+    r2->imprime("r2");
+    r1->imprime("r3");
 
 
     cout << "\n\n";
