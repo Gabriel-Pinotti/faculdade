@@ -13,6 +13,9 @@ class Pessoa {
         virtual void dormir() { // virtual → acessa esse caso a classe filho não tenha a sua
             cout << "Pessoa está dormindo\n";
         }
+        virtual ~Pessoa(){ // destrutor, evita vazamento de memória se instância de Latina tomar delete
+            cout << "Pessoa foi deletada\n";
+        }
 };
 
 class Latina : public Pessoa { // Latina herda de Pessoa
@@ -20,6 +23,9 @@ class Latina : public Pessoa { // Latina herda de Pessoa
         Latina(string nome, int idade):Pessoa(nome, idade) {}
         void dormir() {
             cout << "Pessoa latina está dormindo\n";
+        }
+        ~Latina(){
+            cout << "Latina foi deletada\n"; // vaza memória se ~Pessoa() não for virtual
         }
 };
 
@@ -30,7 +36,8 @@ int main()
     Pessoa* p2 = new Latina("Gabriel", 19);
     p1->dormir();
     p2->dormir();
-
+    delete p1; // sem problemas
+    delete p2; // possíveis problemas se destrutor da classe pai não for virtual
     
     cout << "\n\n";
     return 0;
