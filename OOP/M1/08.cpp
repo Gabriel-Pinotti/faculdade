@@ -47,9 +47,7 @@ int main()
 
     Animal *c = new Cachorro("Boris");
     c->comer();
-
-
-
+    // imprime cachorro comeu pois Animal possui virtual em comer(), então busca na classe de mais baixa instância
     
     cout << "\n\n";
     return 0;
