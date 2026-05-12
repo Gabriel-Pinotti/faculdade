@@ -13,7 +13,7 @@ class MinhaSubClasse : public MinhaSuperClasse {
 
 }
 
-// herança múltipla seria uma classe herdar de MinhaSubClasse, herança de herança → herança múltipla
+// herança múltipla seria MinhaSubClasse ter mais de 1 super classe
 
 int main()
 {
